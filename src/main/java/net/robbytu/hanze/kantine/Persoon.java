@@ -139,7 +139,7 @@ public class Persoon {
      * Returns the gender
      * @return Geslacht (M/V)
      */
-    public char getGeslacht() {
-        return this.geslacht;
+    public String getGeslacht() {
+        return (this.geslacht == 'M') ? "Man" : "Vrouw";
     }
 }
