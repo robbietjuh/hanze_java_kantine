@@ -51,6 +51,12 @@ public class Persoon {
      * @return Wether the birthdate is valid
      */
     private boolean checkGeboortedatum(int dag, int maand, int jaar) {
+        int[] dagen = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+        if(jaar < 1900 || jaar > 2100) return false;
+        if(maand < 1 || maand > 12) return false;
+        if(dag < 1 || dag > dagen[maand]) return false;
+
         return true;
     }
 
