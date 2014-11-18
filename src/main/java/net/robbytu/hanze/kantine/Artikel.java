@@ -24,4 +24,35 @@ public class Artikel {
         this.prijs = artikelPrijs;
     }
 
+    /**
+     * Sets the name of article
+     * @param naam Name of the article
+     */
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    /**
+     * Sets the price of the article
+     * @param prijs Price of the article
+     */
+    public void setPrijs(float prijs) {
+        this.prijs = prijs;
+    }
+
+    /**
+     * Gets the article's name
+     * @return Name of the article
+     */
+    public String getNaam() {
+        return this.naam;
+    }
+
+    /**
+     * Gets the article's price
+     * @return Price of the article
+     */
+    public float getPrijs() {
+        return this.prijs;
+    }
 }
