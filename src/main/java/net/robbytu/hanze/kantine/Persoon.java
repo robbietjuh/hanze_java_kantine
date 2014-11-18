@@ -140,6 +140,8 @@ public class Persoon {
      * @return Geslacht (M/V)
      */
     public String getGeslacht() {
-        return (this.geslacht == 'M') ? "Man" : "Vrouw";
+        if(this.geslacht == 'M') return "Man";
+        else if(this.geslacht == 'V') return "Vrouw";
+        else return "Onbekend";
     }
 }
