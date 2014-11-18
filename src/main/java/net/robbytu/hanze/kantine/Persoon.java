@@ -19,4 +19,103 @@ public class Persoon {
     int jaar;
     char geslacht;
 
+    /**
+     * Sets the BSN
+     * @param BSN BSN
+     */
+    public void setBSN(int BSN) {
+        this.BSN = BSN;
+    }
+
+    /**
+     * Sets the first name
+     * @param voornaam Voornaam
+     */
+    public void setVoornaam(String voornaam) {
+        this.voornaam = voornaam;
+    }
+
+    /**
+     * Sets the last name
+     * @param achternaam Achternaam
+     */
+    public void setAchternaam(String achternaam) {
+        this.achternaam = achternaam;
+    }
+
+    /**
+     * Checks wether the birthdate is valid
+     * @param dag The day, should be between 01 and 31
+     * @param maand The month, should be between 01 and 12
+     * @param jaar The year, should be between 1900 and 2100
+     * @return Wether the birthdate is valid
+     */
+    private boolean checkGeboortedatum(int dag, int maand, int jaar) {
+        return true;
+    }
+
+    /**
+     * Sets the birthdate
+     * @param dag The day, should be between 01 and 31
+     * @param maand The month, should be between 01 and 12
+     * @param jaar The year, should be between 1900 and 2100
+     */
+    public void setGeboortedatum(int dag, int maand, int jaar) {
+        boolean isValid = this.checkGeboortedatum(dag, maand, jaar);
+
+        this.dag = (isValid) ? dag : 0;
+        this.maand = (isValid) ? maand : 0;
+        this.jaar = (isValid) ? jaar : 0;
+    }
+
+    /**
+     * Sets the gender.
+     * @param geslacht Gender. Should be one of 'M' or 'V'
+     */
+    public void setGeslacht(char geslacht) {
+        this.geslacht = (geslacht == 'M' || geslacht == 'V') ? geslacht : 'N';
+    }
+
+    /**
+     * Returns the BSN
+     * @return BSN
+     */
+    public int getBSN() {
+        return this.BSN;
+    }
+
+    /**
+     * Returns the first name
+     * @return Voornaam
+     */
+    public String getVoornaam() {
+        return this.voornaam;
+    }
+
+    /**
+     * Returns the last name
+     * @return Achternaam
+     */
+    public String getAchternaam() {
+        return this.achternaam;
+    }
+
+    /**
+     * Returns a formatted birthdate
+     * @return Geboortedatum
+     */
+    public String getGeboortedatum() {
+        String formattedGeboortedatum = "Onbekend";
+        if(dag != 0 && maand != 0 && jaar != 0) formattedGeboortedatum = dag + "/" + maand + "/" + jaar;
+
+        return formattedGeboortedatum;
+    }
+
+    /**
+     * Returns the gender
+     * @return Geslacht (M/V)
+     */
+    public char getGeslacht() {
+        return this.geslacht;
+    }
 }
