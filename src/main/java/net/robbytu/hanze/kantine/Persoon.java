@@ -20,6 +20,24 @@ public class Persoon {
     char geslacht;
 
     /**
+     * Initializes a new instance of the Persoon class
+     * @param BSN BSN
+     * @param voornaam Voornaam
+     * @param achternaam Achternaam
+     * @param dag Dag
+     * @param maand Maand
+     * @param jaar Jaar
+     * @param geslacht Geslacht
+     */
+    public Persoon(int BSN, String voornaam, String achternaam, int dag, int maand, int jaar, char geslacht) {
+        this.setBSN(BSN);
+        this.setVoornaam(voornaam);
+        this.setAchternaam(achternaam);
+        this.setGeboortedatum(dag, maand, jaar);
+        this.setGeslacht(geslacht);
+    }
+
+    /**
      * Sets the BSN
      * @param BSN BSN
      */
