@@ -75,7 +75,7 @@ public class Persoon {
         if(maand < 1 || maand > 12) return false;
         if(((jaar % 4 == 0 && jaar % 100 != 0) || jaar % 400 == 0) && maand == 2 && dag == 29) return  true;
         if(dag < 1 || dag > dagen[maand - 1]) return false;
-        if(((jaar % 4 != 0 && jaar % 100 == 0) || jaar % 400 != 0)) return false;
+        if(((jaar % 100 == 0) && jaar % 400 != 0)) return false;
         return true;
     }
 
