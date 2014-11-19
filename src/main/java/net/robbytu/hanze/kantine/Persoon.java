@@ -144,4 +144,16 @@ public class Persoon {
         else if(this.geslacht == 'V') return "Vrouw";
         else return "Onbekend";
     }
+
+    /**
+     * Prints details about this person into stdout
+     */
+    public void drukAf() {
+        System.out.println("Details over persoon met BSN " + this.getBSN() + ": ");
+        System.out.println(" * Voornaam:      " + this.getVoornaam());
+        System.out.println(" * Achternaam:    " + this.getAchternaam());
+        System.out.println(" * Geboortedatum: " + this.getGeboortedatum());
+        System.out.println(" * Geslacht:      " + this.getGeslacht());
+    }
+
 }
