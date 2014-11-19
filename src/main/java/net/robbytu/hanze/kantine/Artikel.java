@@ -55,4 +55,12 @@ public class Artikel {
     public float getPrijs() {
         return this.prijs;
     }
+
+    /**
+     * Prints details about this article into stdout
+     */
+    public void drukAf() {
+        System.out.println(String.format("Dit artikel heeft de naam '%s' meegekregen en kost € %.2f",
+                                         this.getNaam(), this.getPrijs()));
+    }
 }
