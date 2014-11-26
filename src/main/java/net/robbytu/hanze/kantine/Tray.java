@@ -9,7 +9,7 @@ public class Tray {
     private ArrayList<Article> articles;
 
     /**
-     * Constructor
+     * Initializes a new Tray instance
      */
     public Tray() {
         this.articles = new ArrayList<Article>();
