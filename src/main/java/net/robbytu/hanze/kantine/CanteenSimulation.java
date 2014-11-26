@@ -32,6 +32,9 @@ public class CanteenSimulation {
 
             System.out.println(String.format("On day %d, %d articles were sold, resulting in a sales volume of € %.2f",
                                              currentDay + 1, amountOfArticles, amountOfMoney));
+
+            // Reset the cash register for 'tomorrow' ;-)
+            this.canteen.resetCashRegister();
         }
     }
 
