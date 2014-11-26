@@ -89,9 +89,9 @@ public class Persoon {
 
         if(jaar < 1900 || jaar > 2100) return false;
         if(maand < 1 || maand > 12) return false;
+        //Check if year is a leap year and the date is 29th of febuary
         if(((jaar % 4 == 0 && jaar % 100 != 0) || jaar % 400 == 0) && maand == 2 && dag == 29) return  true;
         if(dag < 1 || dag > dagen[maand - 1]) return false;
-        if(((jaar % 100 == 0) && jaar % 400 != 0)) return false;
         return true;
     }
 
