@@ -32,4 +32,11 @@ public class Canteen {
         this.checkoutLine.addPerson(personInLine);
     }
 
+    public void processCheckoutLine() {
+        while(this.checkoutLine.isPersonInLine()) {
+            Person personToProcess = this.checkoutLine.getFirstPersonInLine();
+            this.cashRegister.checkout(personToProcess);
+        }
+    }
+
 }
