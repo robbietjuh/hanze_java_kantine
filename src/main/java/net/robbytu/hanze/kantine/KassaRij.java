@@ -1,20 +1,25 @@
 package net.robbytu.hanze.kantine;
 
+import java.util.ArrayList;
+
 /**
  * Created by Dylan on 26-11-2014.
  */
 public class KassaRij {
 
+    private ArrayList<Persoon> personen;
     /**
      * Constructor
      */
     public KassaRij() {
+        personen = new ArrayList<Persoon>();
     }
     /**
     * Persoon sluit achter in de rij aan
     * @param persoon current persoon
     */
     public void sluitAchteraan(Persoon persoon) {
+        personen.add(persoon);
     }
     /**
      * Indien er een rij bestaat, de eerste Persoon uit
