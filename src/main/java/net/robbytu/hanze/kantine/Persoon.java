@@ -1,5 +1,6 @@
 package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
+
 /**
  * Persoon
  *
@@ -18,6 +19,21 @@ public class Persoon {
     int maand;
     int jaar;
     char geslacht;
+    Dienblad dienblad;
+
+
+
+    /**
+     * Initializes a new instance of the Persoon class
+     * without any par
+     */
+    public Persoon()
+    {
+        this.setGeslacht('O');
+        this.setGeboortedatum(0, 0, 0);
+    }
+
+
 
     /**
      * Initializes a new instance of the Persoon class
@@ -157,4 +173,27 @@ public class Persoon {
         System.out.println(" * Geslacht:      " + this.getGeslacht());
     }
 
+    /**
+     * Add a Dienblad to persoon
+     * @param dienblad A dienblad
+     */
+    public void pakDienblad(Dienblad dienblad){if(this.dienblad == null){this.dienblad = dienblad;}}
+
+    /**
+     * Add artikel to dienblad
+     * @param artikel What artikel to add
+     */
+    public void pakArtikel(Artikel artikel){if(dienblad != null){dienblad.voegToe(artikel);}}
+
+    /**
+     * returns totaalprijs
+     * @return de totaalprijs
+     */
+    public double getTotaalPrijs(){if(dienblad != null){return dienblad.getTotaalPrijs();}return 0;}
+
+    /**
+     * returns amount of artikelen
+     * @return
+     */
+    public int getAantalArtikelen(){if(dienblad != null){return dienblad.getAantalArtikelen();}return 0;}
 }
