@@ -19,4 +19,17 @@ public class Canteen {
         this.cashRegister = new CashRegister(this.checkoutLine);
     }
 
+    public void addInLine() {
+        // Create new person and assign tray
+        Person personInLine = new Person();
+        personInLine.setTray(new Tray());
+
+        // Add articles onto the person's tray
+        personInLine.addArticle(new Article("Banana", 1.00));
+        personInLine.addArticle(new Article("Sandwitch", 2.50));
+
+        // Put person in line
+        this.checkoutLine.addPerson(personInLine);
+    }
+
 }
