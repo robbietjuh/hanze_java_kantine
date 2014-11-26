@@ -10,4 +10,11 @@ package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 s
  * @license MIT License
  */
 public class CanteenSimulation {
+
+    private Canteen canteen;
+
+    public CanteenSimulation() {
+        this.canteen = new Canteen();
+    }
+
 }
