@@ -13,10 +13,17 @@ public class CanteenSimulation {
 
     private Canteen canteen;
 
+    /**
+     * Initializes a new instance of the CanteenSimulation class
+     */
     public CanteenSimulation() {
         this.canteen = new Canteen();
     }
 
+    /**
+     * Simulates the canteen's activity
+     * @param days Amount of days to simulate
+     */
     public void simulate(int days) {
         for(int currentDay = 0; currentDay < days; currentDay ++) {
             // Add people in line
