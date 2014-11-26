@@ -39,4 +39,8 @@ public class Canteen {
         }
     }
 
+    public double getAmountOfMoneyInCashRegister() {
+        return this.cashRegister.getAmountOfMoney();
+    }
+
 }
