@@ -1,5 +1,6 @@
 package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
+
 /**
  * Artikel
  *
@@ -12,14 +13,25 @@ package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 s
 public class Artikel {
 
     private String naam;
-    private float prijs;
+    private double prijs;
+
+
+    /**
+     * Initializes a new instance of the Artikel class
+     * without any parameters
+     */
+    public Artikel()
+    {
+
+    }
+
 
     /**
      * Initializes a new instance of the Artikel class
      * @param artikelNaam Name of the article
      * @param artikelPrijs Pricing of the article
      */
-    public Artikel(String artikelNaam, float artikelPrijs) {
+    public Artikel(String artikelNaam, double artikelPrijs) {
         this.naam = artikelNaam;
         this.prijs = artikelPrijs;
     }
@@ -36,7 +48,7 @@ public class Artikel {
      * Sets the price of the article
      * @param prijs Price of the article
      */
-    public void setPrijs(float prijs) {
+    public void setPrijs(double prijs) {
         this.prijs = prijs;
     }
 
@@ -52,7 +64,7 @@ public class Artikel {
      * Gets the article's price
      * @return Price of the article
      */
-    public float getPrijs() {
+    public double getPrijs() {
         return this.prijs;
     }
 
@@ -61,6 +73,6 @@ public class Artikel {
      */
     public void drukAf() {
         System.out.println(String.format("Dit artikel heeft de naam '%s' meegekregen en kost € %.2f",
-                                         this.getNaam(), this.getPrijs()));
+                this.getNaam(), this.getPrijs()));
     }
 }
