@@ -10,9 +10,9 @@ package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 s
  * @license MIT License
  */
 public class CashRegister {
-    CheckoutLine line;
-    int amountOfArticles;
-    double amountOfMoney;
+    private CheckoutLine line;
+    private int amountOfArticles;
+    private double amountOfMoney;
 
     /**
      * Initializes a new instance of the CashRegister class

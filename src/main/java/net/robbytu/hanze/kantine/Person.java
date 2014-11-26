@@ -11,14 +11,14 @@ package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 s
  * @license MIT License
  */
 public class Person {
-    int bsn;
-    String firstname;
-    String lastname;
-    int day;
-    int month;
-    int year;
-    char gender;
-    Tray tray;
+    private int bsn;
+    private String firstname;
+    private String lastname;
+    private int day;
+    private int month;
+    private int year;
+    private char gender;
+    private Tray tray;
 
     /**
      * Initializes a new instance of the Person class
