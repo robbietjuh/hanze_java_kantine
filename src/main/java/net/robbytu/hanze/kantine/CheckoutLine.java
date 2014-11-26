@@ -26,7 +26,7 @@ public class CheckoutLine {
      * Returns the first person in line. If no one is in line, returns null.
      * @return Person object or null
      */
-    public Person eerstePersoonInRij() {
+    public Person getFirstPersonInLine() {
         if(this.isPersonInLine()) {
             Person firstInLine = this.peopleInLine.get(0);
             this.peopleInLine.remove(0);
