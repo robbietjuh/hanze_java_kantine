@@ -11,4 +11,12 @@ package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 s
  */
 public class Canteen {
 
+    private CheckoutLine checkoutLine;
+    private CashRegister cashRegister;
+
+    public Canteen() {
+        this.checkoutLine = new CheckoutLine();
+        this.cashRegister = new CashRegister(this.checkoutLine);
+    }
+
 }
