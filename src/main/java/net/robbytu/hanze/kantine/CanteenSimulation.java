@@ -17,4 +17,22 @@ public class CanteenSimulation {
         this.canteen = new Canteen();
     }
 
+    public void simulate(int days) {
+        for(int currentDay = 0; currentDay < days; currentDay ++) {
+            // Add people in line
+            for(int personToLetIn = 0; personToLetIn < currentDay + 10; personToLetIn ++)
+                this.canteen.addInLine();
+
+            // Process those people
+            this.canteen.processCheckoutLine();
+
+            // Print today's profits
+            int amountOfArticles = this.canteen.getAmountOfArticles();
+            double amountOfMoney = this.canteen.getAmountOfMoneyInCashRegister();
+
+            System.out.println(String.format("On day %d, %d articles were sold, resulting in a sales volume of € %.2f",
+                                             currentDay + 1, amountOfArticles, amountOfMoney));
+        }
+    }
+
 }
