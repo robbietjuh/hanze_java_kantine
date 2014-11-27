@@ -35,16 +35,16 @@ public class Person {
      * @param bsn National security number
      * @param firstname First name
      * @param lastname Last name
-     * @param name Birthdate -- day
+     * @param day Birthdate -- day
      * @param month Birthdate -- month
      * @param year Birthdate -- year
      * @param gender Gender
      */
-    public Person(int bsn, String firstname, String lastname, int name, int month, int year, char gender) {
+    public Person(int bsn, String firstname, String lastname, int day, int month, int year, char gender) {
         this.setBsn(bsn);
         this.setFirstname(firstname);
         this.setLastname(lastname);
-        this.setBirthdate(name, month, year);
+        this.setBirthdate(day, month, year);
         this.setGender(gender);
     }
 
