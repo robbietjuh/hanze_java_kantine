@@ -108,10 +108,10 @@ public class Person {
 
     /**
      * Sets the gender.
-     * @param gender Gender. Should be one of 'M' or 'V'
+     * @param gender Gender. Should be one of 'M' or 'W'
      */
     public void setGender(char gender) {
-        this.gender = (gender == 'M' || gender == 'V') ? gender : 'N';
+        this.gender = (gender == 'M' || gender == 'W') ? gender : 'N';
     }
 
     /**
