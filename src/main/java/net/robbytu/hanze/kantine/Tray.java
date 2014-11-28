@@ -1,18 +1,17 @@
 package net.robbytu.hanze.kantine;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Created by Dylan on 26-11-2014.
  */
 public class Tray {
-    private ArrayList<Article> articles;
-
+    private Stack<Article> articles;
     /**
      * Initializes a new Tray instance
      */
     public Tray() {
-        this.articles = new ArrayList<Article>();
+        this.articles = new Stack<Article>();
     }
 
     /**
@@ -20,7 +19,7 @@ public class Tray {
      * @param article Article object to add
      */
     public void addArticle(Article article) {
-        this.articles.add(article);
+        this.articles.push(article);
     }
 
     /**
