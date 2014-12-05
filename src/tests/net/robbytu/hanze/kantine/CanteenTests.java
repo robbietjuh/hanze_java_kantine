@@ -21,16 +21,16 @@ public class CanteenTests {
         // Create a new canteen, reset the cash register and check out 1 person
         Canteen canteen = new Canteen();
 
-        canteen.resetCashRegister();
+        canteen.getCashRegister().resetRegister();
         canteen.addInLine();
         canteen.processCheckoutLine();
 
         // Check that it works
         assertThat("The amount of money in the cash register is equal to 3.50",
-                   canteen.getAmountOfMoneyInCashRegister(), equalTo(3.50));
+                   canteen.getCashRegister().getAmountOfMoney(), equalTo(3.50));
 
         assertThat("The amount of articles that passed the cash register is equal to 2",
-                   canteen.getAmountOfArticles(), equalTo(2));
+                   canteen.getCashRegister().getAmountOfArticles(), equalTo(2));
 
         // Add two more people in line and check them out
         canteen.addInLine();
@@ -39,19 +39,19 @@ public class CanteenTests {
 
         // Check that their purchases were added to the cash register
         assertThat("The amount of money in the cash register is equal to 10.50",
-                   canteen.getAmountOfMoneyInCashRegister(), equalTo(10.50));
+                   canteen.getCashRegister().getAmountOfMoney(), equalTo(10.50));
 
         assertThat("The amount of articles that passed the cash register is equal to 6",
-                   canteen.getAmountOfArticles(), equalTo(6));
+                   canteen.getCashRegister().getAmountOfArticles(), equalTo(6));
 
         // Reset the cash register
-        canteen.resetCashRegister();
+        canteen.getCashRegister().resetRegister();
 
         // Check that the counters were reset
         assertThat("The cash register was reset",
-                   canteen.getAmountOfArticles(), equalTo(0));
+                   canteen.getCashRegister().getAmountOfArticles(), equalTo(0));
 
         assertThat("The cash register was reset",
-                   canteen.getAmountOfMoneyInCashRegister(), equalTo(0.0));
+                   canteen.getCashRegister().getAmountOfMoney(), equalTo(0.0));
     }
 }
