@@ -20,11 +20,15 @@ public class CashRegisterTests {
     public void testCheckout() {
         CashRegister cashregister = new CashRegister(null);
         cashregister.resetRegister();
+        Tray testgettray;
 
         Person person = new Person(1234, "Robert", "de Vries", 11, 10, 1996, 'M');
         person.setTray(new Tray());
-        person.addArticle(new Article("Banana", 5.00));
-        person.addArticle(new Article("Apple", 2.50));
+        //person.addArticle(new Article("Banana", 5.00));
+        //person.addArticle(new Article("Apple", 2.50));
+        testgettray = person.getTray();
+        testgettray.addArticle(new Article("Banana", 5.00));
+        testgettray.addArticle(new Article("Apple", 2.50));
         cashregister.checkout(person);
 
         assertThat("2 articles passed the cash register",
