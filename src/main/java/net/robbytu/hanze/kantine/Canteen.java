@@ -13,6 +13,7 @@ public class Canteen {
 
     private CheckoutLine checkoutLine;
     private CashRegister cashRegister;
+    private CanteenSupply canteenSupply;
 
     /**
      * Initializes a new instance of the Canteen class
@@ -31,8 +32,8 @@ public class Canteen {
         personInLine.setTray(new Tray());
 
         // Add articles onto the person's tray
-        personInLine.addArticle(new Article("Banana", 1.00));
-        personInLine.addArticle(new Article("Sandwitch", 2.50));
+        personInLine.getTray().addArticle(new Article("Banana", 1.00));
+        personInLine.getTray().addArticle(new Article("Sandwitch", 2.50));
 
         // Put person in line
         this.checkoutLine.addPerson(personInLine);
@@ -49,26 +50,30 @@ public class Canteen {
     }
 
     /**
-     * Returns the amount of money in the cash register
-     * @return Amount of money in the cash register
+     * Returns the CashRegister
+     * @return the CashRegister
      */
-    public double getAmountOfMoneyInCashRegister() {
-        return this.cashRegister.getAmountOfMoney();
+    public CashRegister getCashRegister()
+    {
+        return this.cashRegister;
     }
 
     /**
-     * Returns the amount of Articles that have passed the cash register
-     * @return Amount of Articles that have passed the cash register
+     * Returns the CanteenSupply
+     * @return the CanteenSupply
      */
-    public int getAmountOfArticles() {
-        return this.cashRegister.getAmountOfArticles();
+    public CanteenSupply getCanteenSupply()
+    {
+        return this.canteenSupply;
     }
 
     /**
-     * Resets the cash register
+     * Sets the CanteenSupple
+     * @param canteenSupply A CanteenSupply
      */
-    public void resetCashRegister() {
-        this.cashRegister.resetRegister();
+    public void setCanteenSupply(CanteenSupply canteenSupply)
+    {
+        this.canteenSupply = canteenSupply;
     }
 
 }
