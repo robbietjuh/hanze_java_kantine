@@ -22,24 +22,9 @@ public class Tray {
         this.articles.push(article);
     }
 
-    /**
-     * Returns the amount of articles on the tray
-     * @return The amount of articles on the tray
-     */
-    public int getAmountOfArticles() {
-        return this.articles.size();
-    }
-
-    /**
-     * Calculates the grand total price of the items on this tray
-     * @return Grand total price
-     */
-    public double getGrandTotal() {
-        double grandtotal = 0;
-        for(Article article : this.articles)
-        {
-            grandtotal += article.getPrice();
-        }
-        return grandtotal;
+    public Iterator<Article> getArticleIterator()
+    {
+        Iterator<Article> ArticleIterator = articles.iterator();
+        return  ArticleIterator;
     }
 }
