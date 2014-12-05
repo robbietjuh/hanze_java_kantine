@@ -1,5 +1,7 @@
 package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
+import java.util.Iterator;
+
 /**
  * CashRegister
  *
@@ -13,7 +15,7 @@ public class CashRegister {
     private CheckoutLine line;
     private int amountOfArticles;
     private double amountOfMoney;
-
+    private Person person;
     /**
      * Initializes a new instance of the CashRegister class
      * @param line Corresponding CheckoutLine
@@ -29,13 +31,23 @@ public class CashRegister {
      * @param person Person to check out
      */
     public void checkout(Person person) {
-        int amountOfArticles = person.getAmountOfArticles();
-        double grandtotalPrice = person.getGrandTotal();
-
-        this.amountOfArticles += amountOfArticles;
-        this.amountOfMoney += grandtotalPrice;
+        this.person = person;
+        setAmountOfArticles();
+        setAmountOfMoney();
     }
 
+    /**
+     * Sets Amount Of Articles
+     */
+    public void setAmountOfArticles()
+    {
+        Iterator<Article> articlesIterator = this.person.getTray().getArticleIterator();
+        while(articlesIterator.hasNext())
+        {
+            this.amountOfArticles++;
+            articlesIterator.next();
+        }
+    }
     /**
      * Returns the amount of articles that have passed the register since the last reset
      * @return Amount of articles that have have passed the register
@@ -45,10 +57,23 @@ public class CashRegister {
     }
 
     /**
+     * Sets Amount Of Money
+     */
+    public void setAmountOfMoney()
+    {
+        Iterator<Article> articlesIterator = this.person.getTray().getArticleIterator();
+        while(articlesIterator.hasNext())
+        {
+            this.amountOfMoney += articlesIterator.next().getPrice();
+        }
+    }
+
+    /**
      * Returns the amount of money in the register since the last reset
      * @return Amount of money in the register
      */
     public double getAmountOfMoney() {
+
         return this.amountOfMoney;
     }
 
