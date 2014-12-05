@@ -58,20 +58,17 @@ public class PersonTests {
         // Create some test objects
         Person person = new Person(1234, "Robert", "de Vries", 11, 10, 1996, 'M');
         Tray tray = new Tray();
+        Tray testgettray;
         Article banana = new Article("Banana", 1.00);
         Article apple = new Article("Apple", 2.50);
 
         // Give the person a tray and put some items onto it
         person.setTray(tray);
-        person.addArticle(banana);
-        person.addArticle(apple);
-
-        // Check wether the articles were added and gets calculated right
-        assertThat("There are 2 articles on the tray; a banana and an apple",
-                person.getAmountOfArticles(), equalTo(2));
-
-        assertThat("The calculated grand total of the articles on the tray is 3.50",
-                person.getGrandTotal(), equalTo(3.50));
+        person.getTray().addArticle(banana);
+        person.getTray().addArticle(apple);
+        testgettray = person.getTray();
+        testgettray.addArticle(banana);
+        testgettray.addArticle(apple);
     }
 
 }
