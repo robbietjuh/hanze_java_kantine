@@ -179,26 +179,11 @@ public class Person {
     }
 
     /**
-     * Add article to Tray
-     * @param article What article to add
+     * Returns the tray
+     * @return tray
      */
-    public void addArticle(Article article) {
-        if(tray != null) tray.addArticle(article);
-    }
-
-    /**
-     * Returns the grand total of all items on the Tray
-     * @return Grand total price
-     */
-    public double getGrandTotal() {
-        return (tray != null) ? tray.getGrandTotal() : 0;
-    }
-
-    /**
-     * Returns the amount of articles on the Tray
-     * @return
-     */
-    public int getAmountOfArticles() {
-        return (tray != null) ? tray.getAmountOfArticles() : 0;
+    public Tray getTray()
+    {
+        return this.tray;
     }
 }
