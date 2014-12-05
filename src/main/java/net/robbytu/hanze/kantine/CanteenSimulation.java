@@ -34,14 +34,14 @@ public class CanteenSimulation {
             this.canteen.processCheckoutLine();
 
             // Print today's profits
-            int amountOfArticles = this.canteen.getAmountOfArticles();
-            double amountOfMoney = this.canteen.getAmountOfMoneyInCashRegister();
+            int amountOfArticles = this.canteen.getCashRegister().getAmountOfArticles();
+            double amountOfMoney = this.canteen.getCashRegister().getAmountOfMoney();
 
             System.out.println(String.format("On day %d, %d articles were sold, resulting in a sales volume of € %.2f",
                                              currentDay + 1, amountOfArticles, amountOfMoney));
 
             // Reset the cash register for 'tomorrow' ;-)
-            this.canteen.resetCashRegister();
+            this.canteen.getCashRegister().resetRegister();
         }
     }
 
