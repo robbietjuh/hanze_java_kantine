@@ -2,6 +2,8 @@ package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 s
 
 import org.junit.Test;
 
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
@@ -27,11 +29,7 @@ public class TrayTests {
         tray.addArticle(banana);
         tray.addArticle(apple);
 
-        // Check wether the articles were added and gets calculated right
-        assertThat("There are 2 articles on the tray; a banana and an apple",
-                tray.getAmountOfArticles(), equalTo(2));
-
-        assertThat("The calculated grand total of the articles on the tray is 5.51",
-                tray.getGrandTotal(), equalTo(5.51));
+        // Test the getIterator method
+        Iterator<Article> testIterator =  tray.getArticleIterator();
     }
 }
