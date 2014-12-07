@@ -37,7 +37,7 @@ public class ArticleTests {
         article.printInfo();
 
         assertThat("Article details are formatted correctly",
-                   outContent.toString().replaceAll("\r\n", "\n"), equalTo("This article was named 'Banana' and costs € 5,00\n"));
+                   outContent.toString().replaceAll("\r\n", "\n"), equalTo("This article was named 'Banana' and costs 5,00 euros\n"));
     }
 
     @After
