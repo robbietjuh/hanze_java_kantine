@@ -1,5 +1,7 @@
 package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
+import java.util.Random;
+
 /**
  * CanteenSimulation
  *
@@ -12,12 +14,33 @@ package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 s
 public class CanteenSimulation {
 
     private Canteen canteen;
+    private CanteenSupply supply;
+    private Random random;
+
+    private static final int AMOUNT_OF_ARTICLES = 4;
+    private static final String[] ARTICLE_NAMES = new String[] {  "Coffee", "Peanut butter sandwich", "Cheese sandwich", "Apple juice"};
+    private static final double[] ARTICLE_PRICES = new double[] { 1.50,     2.10,                     1.65,              1.65 };
+
+    private static final int MIN_ARTICLES_PER_TYPE = 10000;
+    private static final int MAX_ARTICLES_PER_TYPE = 20000;
+
+    private static final int MIN_PERSONS_PER_DAY = 50;
+    private static final int MAX_PERSONS_PER_DAY = 100;
+
+    private static final int MIN_ARTICLES_PER_PERSON = 1;
+    private static final int MAX_ARTICLES_PER_PERSON = 4;
 
     /**
      * Initializes a new instance of the CanteenSimulation class
      */
     public CanteenSimulation() {
+        int[] quantities;
+
         this.canteen = new Canteen();
+        this.random = new Random();
+        this.supply = new CanteenSupply(ARTICLE_NAMES, ARTICLE_PRICES, quantities);
+
+        this.canteen.setCanteenSupply(this.supply);
     }
 
     /**
