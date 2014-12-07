@@ -24,32 +24,6 @@ public class Canteen {
     }
 
     /**
-     * Adds a new person in line, gives them a Tray and two Articles
-     */
-    public void addInLine() {
-        // Create new person and assign tray
-        Person personInLine = new Person();
-        personInLine.setTray(new Tray());
-
-        // Add articles onto the person's tray
-        personInLine.getTray().addArticle(new Article("Banana", 1.00));
-        personInLine.getTray().addArticle(new Article("Sandwitch", 2.50));
-
-        // Put person in line
-        this.checkoutLine.addPerson(personInLine);
-    }
-
-    /**
-     * Processes the check out line
-     */
-    public void processCheckoutLine() {
-        while(this.checkoutLine.isPersonInLine()) {
-            Person personToProcess = this.checkoutLine.getFirstPersonInLine();
-            this.cashRegister.checkout(personToProcess);
-        }
-    }
-
-    /**
      * Returns the CashRegister
      * @return the CashRegister
      */
@@ -74,6 +48,33 @@ public class Canteen {
     public void setCanteenSupply(CanteenSupply canteenSupply)
     {
         this.canteenSupply = canteenSupply;
+    }
+
+    /**
+     * Adds a new person in line, gives them a Tray and the requested Articles
+     */
+    public void addInLine(Person personInLine, String[] articleNames) {
+        // Check wether a canteen supply has been set
+        if(this.getCanteenSupply() == null) return;
+
+        // Pick the articles from the supply
+        for(String articleName : articleNames) {
+            Article pickedArticle = this.getCanteenSupply().getArticle(articleName);
+            if(pickedArticle != null) personInLine.getTray().addArticle(pickedArticle);
+        }
+
+        // Put person in line
+        this.checkoutLine.addPerson(personInLine);
+    }
+
+    /**
+     * Processes the check out line
+     */
+    public void processCheckoutLine() {
+        while(this.checkoutLine.isPersonInLine()) {
+            Person personToProcess = this.checkoutLine.getFirstPersonInLine();
+            this.cashRegister.checkout(personToProcess);
+        }
     }
 
 }
