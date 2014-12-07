@@ -34,10 +34,10 @@ public class CanteenSimulation {
      * Initializes a new instance of the CanteenSimulation class
      */
     public CanteenSimulation() {
-        int[] quantities = this.getRandomArray(AMOUNT_OF_ARTICLES, MIN_ARTICLES_PER_TYPE, MAX_ARTICLES_PER_TYPE);
-
         this.canteen = new Canteen();
         this.random = new Random();
+
+        int[] quantities = this.getRandomArray(AMOUNT_OF_ARTICLES, MIN_ARTICLES_PER_TYPE, MAX_ARTICLES_PER_TYPE);
         this.supply = new CanteenSupply(ARTICLE_NAMES, ARTICLE_PRICES, quantities);
 
         this.canteen.setCanteenSupply(this.supply);
@@ -89,19 +89,29 @@ public class CanteenSimulation {
      */
     public void simulate(int days) {
         for(int currentDay = 0; currentDay < days; currentDay ++) {
-            // Add people in line
-            for(int personToLetIn = 0; personToLetIn < currentDay + 10; personToLetIn ++)
-                this.canteen.addInLine();
+            int amountOfPeopleToLetIn = this.getRandomValue(MIN_PERSONS_PER_DAY, MAX_PERSONS_PER_DAY);
 
-            // Process those people
+            // Add people in line and put some random articles on their tray
+            for(int personToLetIn = 0; personToLetIn < amountOfPeopleToLetIn; personToLetIn ++) {
+                Person person = new Person();
+                person.setTray(new Tray());
+
+                int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
+                int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, AMOUNT_OF_ARTICLES-1);
+                String[] articles = this.getArticleNames(articlesToPutOnTray);
+
+                canteen.addInLine(person, articles);
+            }
+
+            // Process people in line
             this.canteen.processCheckoutLine();
 
             // Print today's profits
             int amountOfArticles = this.canteen.getCashRegister().getAmountOfArticles();
             double amountOfMoney = this.canteen.getCashRegister().getAmountOfMoney();
 
-            System.out.println(String.format("On day %d, %d articles were sold, resulting in a sales volume of € %.2f",
-                                             currentDay + 1, amountOfArticles, amountOfMoney));
+            System.out.println(String.format("On day %d, %d people visited the canteen and %d articles were sold, resulting in a sales volume of %.2f euros",
+                                             currentDay + 1, amountOfPeopleToLetIn, amountOfArticles, amountOfMoney));
 
             // Reset the cash register for 'tomorrow' ;-)
             this.canteen.getCashRegister().resetRegister();
