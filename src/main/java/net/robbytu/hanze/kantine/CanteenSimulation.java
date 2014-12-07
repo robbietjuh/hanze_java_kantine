@@ -70,6 +70,20 @@ public class CanteenSimulation {
     }
 
     /**
+     * Gets article names for the given indexes
+     * @param indexes The indexes to fetch info from in the ARTICLE_NAMES array
+     * @return An array of article names
+     */
+    private String[] getArticleNames(int[] indexes) {
+        String[] articles = new String[indexes.length];
+
+        for(int index = 0; index < indexes.length; index++)
+            articles[index] = ARTICLE_NAMES[indexes[index]];
+
+        return articles;
+    }
+
+    /**
      * Simulates the canteen's activity
      * @param days Amount of days to simulate
      */
