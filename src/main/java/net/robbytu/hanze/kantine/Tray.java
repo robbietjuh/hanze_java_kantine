@@ -25,6 +25,6 @@ public class Tray {
     public Iterator<Article> getArticleIterator()
     {
         Iterator<Article> ArticleIterator = articles.iterator();
-        return  ArticleIterator;
+        return ArticleIterator;
     }
 }

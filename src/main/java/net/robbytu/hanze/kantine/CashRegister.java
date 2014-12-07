@@ -16,6 +16,7 @@ public class CashRegister {
     private int amountOfArticles;
     private double amountOfMoney;
     private Person person;
+
     /**
      * Initializes a new instance of the CashRegister class
      * @param line Corresponding CheckoutLine
@@ -32,8 +33,8 @@ public class CashRegister {
      */
     public void checkout(Person person) {
         this.person = person;
-        setAmountOfArticles();
-        setAmountOfMoney();
+        this.setAmountOfArticles();
+        this.setAmountOfMoney();
     }
 
     /**
