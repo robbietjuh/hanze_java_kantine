@@ -34,13 +34,39 @@ public class CanteenSimulation {
      * Initializes a new instance of the CanteenSimulation class
      */
     public CanteenSimulation() {
-        int[] quantities;
+        int[] quantities = this.getRandomArray(AMOUNT_OF_ARTICLES, MIN_ARTICLES_PER_TYPE, MAX_ARTICLES_PER_TYPE);
 
         this.canteen = new Canteen();
         this.random = new Random();
         this.supply = new CanteenSupply(ARTICLE_NAMES, ARTICLE_PRICES, quantities);
 
         this.canteen.setCanteenSupply(this.supply);
+    }
+
+    /**
+     * Generates an array of random integers between the given min and max values
+     * @param length Length of the array you want to generate
+     * @param min Minimum
+     * @param max Maximum
+     * @return An array of random integers
+     */
+    private int[] getRandomArray(int length, int min, int max) {
+        int[] temp = new int[length];
+
+        for(int currentIndex = 0; currentIndex < length; currentIndex++)
+            temp[currentIndex] = this.getRandomValue(min, max);
+
+        return temp;
+    }
+
+    /**
+     * Generates a random value in between the min and max values
+     * @param min Minimum
+     * @param max Maximum
+     * @return A random integer
+     */
+    private int getRandomValue(int min, int max) {
+        return this.random.nextInt(max - min + 1) + min;
     }
 
     /**
