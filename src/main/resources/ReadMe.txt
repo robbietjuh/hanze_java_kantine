@@ -16,3 +16,20 @@ Week opdracht #2
 Opgave 5a:
     Een while lus is handiger omdat het verwerken van de index in de wachtirj niet meer nodig is. Dit wordt
     immers al gedaan door de CheckoutLine, waarbij de eerste persoon verwijderd wordt nadat we hem fetchen.
+
+
+Week opdracht #3
+================
+
+Opgave 1:
+    `Canteen.getAmountOfMoneyInCashRegister()`
+    `Canteen.getAmountOfArticles()`
+    `Canteen.resetCashRegister()`
+
+Opgave 2a:
+    Omdat deze methodes enkel binnen de klasse zelf aangeroepen worden. Andere klasses hoeven er dus niet per se
+    toegang toe te hebben.
+
+Opgave 2b:
+    Een `HashMap` gebruik je in een situatie waarbij je een `key` moet koppelen aan bepaalde `value`. Als je
+    enkel `keys` op wil slaan, zonder dat daar een bepaalde `value` aan gekoppeld moet worden, gebruik je een `HashSet`.
