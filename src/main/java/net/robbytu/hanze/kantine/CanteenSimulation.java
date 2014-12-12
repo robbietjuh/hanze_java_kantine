@@ -113,6 +113,7 @@ public class CanteenSimulation {
                 String[] articles = this.getArticleNames(articlesToPutOnTray);
 
                 canteen.addInLine(person, articles);
+                person.printDetails();
             }
 
             //add 10 teachers in line and put some random articles on their tray
@@ -125,6 +126,7 @@ public class CanteenSimulation {
                 String[] articles = this.getArticleNames(articlesToPutOnTray);
 
                 canteen.addInLine(person, articles);
+                person.printDetails();
             }
 
             //add 1 canteenemployee in line and put some random articles on their tray
@@ -137,6 +139,7 @@ public class CanteenSimulation {
                 String[] articles = this.getArticleNames(articlesToPutOnTray);
 
                 canteen.addInLine(person, articles);
+                person.printDetails();
             }
 
 
