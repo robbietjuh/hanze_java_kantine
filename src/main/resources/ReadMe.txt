@@ -46,3 +46,7 @@ Opgave 1d
 Opgave 1e
     Je doel is bereikt want je kan geen instantie van Administratie(Administration) meer maken en daardoor kan je de
     methoden in de klasse Administratie(Administration) ook niet meer aanroepen
+
+Opgave 1h
+    Door de variabel final te maken is hij niet meer te wijzigen door middel van code, je moet hem zelf met
+    de hand in de code wijzigen als hij anders moet;
