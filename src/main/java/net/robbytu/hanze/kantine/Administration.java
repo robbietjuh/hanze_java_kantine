@@ -11,7 +11,7 @@ public class Administration
      * @param quantity
      * @return the average
      */
-    public double calculateAverageQuantity(int[] quantity)
+    public static double calculateAverageQuantity(int[] quantity)
     {
         double total = 0;
         for (int value : quantity)
@@ -27,7 +27,7 @@ public class Administration
      * @param sales
      * @return the average
      */
-    public double calculateAverageSales(double[] sales)
+    public static double calculateAverageSales(double[] sales)
     {
         double total = 0;
         for (double value : sales)
