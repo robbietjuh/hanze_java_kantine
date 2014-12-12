@@ -58,3 +58,7 @@ Opgave 1i
 Opgave 1j
     Door final te veranderen in static is de variabel weer te wijzigen door middel van code
     en dit is wat je hier dus niet wil.
+
+Opgave 2b
+    Als deze niet boven aan staat is het niet mogelijk om de variabelen van de super klasse te gebruiken
+    omdat ze niet geinitialiseerd zijn.
