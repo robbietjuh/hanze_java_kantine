@@ -1,5 +1,7 @@
 package net.robbytu.hanze.kantine;
 
+import java.util.Random;
+
 /**
  * Created by Dylan on 12-12-2014.
  */
@@ -15,6 +17,12 @@ public class Teacher extends Person
     public Teacher()
     {
 
+        Random random = new Random();
+        int tempNumber = random.nextInt(5);
+        String[] departments = {"Chemics Lab", "Computer Lab", "Lecture Hall", "Anime room", "Study Hall"};
+        this.teacherDepartment = departments[tempNumber];
+        char[] letters = {'A','B','C','D','E','F','G','H','I','j','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        teacherAbbreviation += letters[random.nextInt(26)] + letters[random.nextInt(26)] + letters[random.nextInt(26)] + letters[random.nextInt(26)];
     }
     
     public Teacher(String teacherAbbreviation, String teacherDepartment,  int bsn, String firstname, String lastname, int day, int month, int year, char gender)

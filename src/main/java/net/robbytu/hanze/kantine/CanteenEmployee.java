@@ -1,5 +1,7 @@
 package net.robbytu.hanze.kantine;
 
+import java.util.Random;
+
 /**
  * Created by Dylan on 12-12-2014.
  */
@@ -14,7 +16,17 @@ public class CanteenEmployee extends Person
      */
     public CanteenEmployee()
     {
-
+        Random random = new Random();
+        employeeNumber = random.nextInt(9999 - 1000) + 1000;
+        int tempInt = random.nextInt(2);
+        if(tempInt == 0)
+        {
+            canUseCashRegister = false;
+        }
+        else
+        {
+            canUseCashRegister = true;
+        }
     }
 
     public CanteenEmployee(int employeeNumber, boolean canUseCashRegister,  int bsn, String firstname, String lastname, int day, int month, int year, char gender)

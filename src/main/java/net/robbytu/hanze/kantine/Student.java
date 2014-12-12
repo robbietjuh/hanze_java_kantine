@@ -1,5 +1,7 @@
 package net.robbytu.hanze.kantine;
 
+import java.util.Random;
+
 /**
  * Created by Dylan on 12-12-2014.
  */
@@ -15,7 +17,11 @@ public class Student extends Person
      */
     public Student()
     {
-
+        Random random = new Random();
+        studentNumber = random.nextInt(9999 - 1000) + 1000;
+        int tempNumber = random.nextInt(5);
+        String[] studies = {"Software Engineering", "Game Development", "Teacher Study", "Economics", "Actor"};
+        this.study = studies[tempNumber];
     }
 
     public Student(int studentNumber, String study, int bsn, String firstname, String lastname, int day, int month, int year, char gender)
