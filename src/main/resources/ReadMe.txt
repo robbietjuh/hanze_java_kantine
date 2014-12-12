@@ -42,3 +42,7 @@ Opgave 1c
 
 Opgave 1d
     Omdat de methoden beide gebruik maken van local variables en paramaters kun je ze static maken.
+
+Opgave 1e
+    Je doel is bereikt want je kan geen instantie van Administratie(Administration) meer maken en daardoor kan je de
+    methoden in de klasse Administratie(Administration) ook niet meer aanroepen
