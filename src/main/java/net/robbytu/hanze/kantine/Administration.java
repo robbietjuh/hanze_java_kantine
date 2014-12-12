@@ -5,6 +5,13 @@ package net.robbytu.hanze.kantine;
  */
 public class Administration
 {
+
+    private Administration()
+    {
+
+    }
+
+
     /**
      * this methode calculates the average value of the int
      * array quantity
