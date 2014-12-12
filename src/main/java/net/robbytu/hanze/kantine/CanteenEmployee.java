@@ -8,6 +8,15 @@ public class CanteenEmployee extends Person
     private int employeeNumber;
     private boolean canUseCashRegister;
 
+    /**
+     * Initializes a new instance of the CanteenEmployee class
+     * without any parameters
+     */
+    public CanteenEmployee()
+    {
+
+    }
+
     public CanteenEmployee(int employeeNumber, boolean canUseCashRegister,  int bsn, String firstname, String lastname, int day, int month, int year, char gender)
     {
         super();

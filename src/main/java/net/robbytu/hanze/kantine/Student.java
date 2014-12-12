@@ -9,6 +9,15 @@ public class Student extends Person
     private String study;
 
 
+    /**
+     * Initializes a new instance of the Student class
+     * without any parameters
+     */
+    public Student()
+    {
+
+    }
+
     public Student(int studentNumber, String study, int bsn, String firstname, String lastname, int day, int month, int year, char gender)
     {
         super();

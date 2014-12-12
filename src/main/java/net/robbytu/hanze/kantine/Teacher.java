@@ -8,6 +8,15 @@ public class Teacher extends Person
     private String teacherAbbreviation;
     private String teacherDepartment;
 
+    /**
+     * Initializes a new instance of the Teacher class
+     * without any parameters
+     */
+    public Teacher()
+    {
+
+    }
+    
     public Teacher(String teacherAbbreviation, String teacherDepartment,  int bsn, String firstname, String lastname, int day, int month, int year, char gender)
     {
         super();
