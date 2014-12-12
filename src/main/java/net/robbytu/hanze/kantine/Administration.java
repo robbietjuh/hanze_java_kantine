@@ -6,7 +6,7 @@ package net.robbytu.hanze.kantine;
 public class Administration
 {
 
-    private static final int days_in_week = 7;
+    private static final int DAYS_IN_WEEK = 7;
 
     private Administration()
     {
@@ -53,13 +53,13 @@ public class Administration
      */
     public static double[] calculateDaySale(double[] sales)
     {
-        double[] temp = new double[days_in_week];
-        for(int i = 0; i < days_in_week; i++)
+        double[] temp = new double[DAYS_IN_WEEK];
+        for(int i = 0; i < DAYS_IN_WEEK; i++)
         {
             int j = 0;
-            while(j <= (sales.length/days_in_week) && i + (days_in_week * j) < sales.length)
+            while(j <= (sales.length/DAYS_IN_WEEK) && i + (DAYS_IN_WEEK * j) < sales.length)
             {
-                temp[i] += sales[i + (days_in_week * j)];
+                temp[i] += sales[i + (DAYS_IN_WEEK * j)];
                 j++;
             }
         }
