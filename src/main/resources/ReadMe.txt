@@ -39,3 +39,6 @@ Week opdracht #4
 
 Opgave 1c
     Standaard is er al een constructor, deze is leeg, dus een lege constructor definiëren heeft geen zin.
+
+Opgave 1d
+    Omdat de methoden beide gebruik maken van local variables en paramaters kun je ze static maken.
