@@ -41,4 +41,15 @@ public class CanteenEmployee extends Person
     {
         this.canUseCashRegister = canUseCashRegister;
     }
+
+    /**
+     * This method overrides the method in Person
+     * and prints employeeNumber and canUseCashRegister
+     */
+    @Override
+    public void printDetails()
+    {
+        System.out.println("Details for the canteen employee with employeenumber: " + this.employeeNumber);
+        System.out.println("Is allowed to use cashregister?: " + canUseCashRegister);
+    }
 }

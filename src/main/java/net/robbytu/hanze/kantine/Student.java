@@ -42,4 +42,15 @@ public class Student extends Person
     {
         this.studentNumber = studentNumber;
     }
+
+    /**
+     * This method overrides the method in Person
+     * and prints studentNumber and study
+     */
+    @Override
+    public void printDetails()
+    {
+        System.out.println("Details for the student with studentnumber: " + this.studentNumber);
+        System.out.println("Study: " + study);
+    }
 }

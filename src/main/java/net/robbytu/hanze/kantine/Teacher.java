@@ -42,4 +42,15 @@ public class Teacher extends Person
     {
         this.teacherDepartment = teacherDepartment;
     }
+
+    /**
+     * This method overrides the method in Person
+     * and prints teacherAbbreviation and teacherDepartment
+     */
+    @Override
+    public void printDetails()
+    {
+        System.out.println("Details for the teacher with abbreviation: " + this.teacherAbbreviation);
+        System.out.println("Department: " + teacherDepartment);
+    }
 }
