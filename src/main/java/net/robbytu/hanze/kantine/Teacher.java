@@ -22,7 +22,11 @@ public class Teacher extends Person
         String[] departments = {"Chemics Lab", "Computer Lab", "Lecture Hall", "Anime room", "Study Hall"};
         this.teacherDepartment = departments[tempNumber];
         char[] letters = {'A','B','C','D','E','F','G','H','I','j','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-        teacherAbbreviation += letters[random.nextInt(26)] + letters[random.nextInt(26)] + letters[random.nextInt(26)] + letters[random.nextInt(26)];
+        for(int i = 0; i < 5; i++)
+        {
+            tempNumber = random.nextInt(26);
+            teacherAbbreviation += letters[tempNumber];
+        }
     }
     
     public Teacher(String teacherAbbreviation, String teacherDepartment,  int bsn, String firstname, String lastname, int day, int month, int year, char gender)
