@@ -50,3 +50,11 @@ Opgave 1e
 Opgave 1h
     Door de variabel final te maken is hij niet meer te wijzigen door middel van code, je moet hem zelf met
     de hand in de code wijzigen als hij anders moet;
+
+Opgave 1i
+    De compile klaagt hierover omdat de method wel van overal beschikbaar is maar de veld die gebruikt wordt niet omdat
+    deze niet static is.
+
+Opgave 1j
+    Door final te veranderen in static is de variabel weer te wijzigen door middel van code
+    en dit is wat je hier dus niet wil.
