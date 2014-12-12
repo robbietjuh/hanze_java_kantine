@@ -33,3 +33,9 @@ Opgave 2a:
 Opgave 2b:
     Een `HashMap` gebruik je in een situatie waarbij je een `key` moet koppelen aan bepaalde `value`. Als je
     enkel `keys` op wil slaan, zonder dat daar een bepaalde `value` aan gekoppeld moet worden, gebruik je een `HashSet`.
+
+Week opdracht #4
+================
+
+Opgave 1c
+    Standaard is er al een constructor, deze is leeg, dus een lege constructor definiëren heeft geen zin.
