@@ -18,7 +18,7 @@ public class Student extends Person
     public Student()
     {
         Random random = new Random();
-        studentNumber = random.nextInt(9999 - 1000) + 1000;
+        this.studentNumber = random.nextInt(9999 - 1000) + 1000;
         int tempNumber = random.nextInt(5);
         String[] studies = {"Software Engineering", "Game Development", "Teacher Study", "Economics", "Actor"};
         this.study = studies[tempNumber];
@@ -66,6 +66,6 @@ public class Student extends Person
     public void printDetails()
     {
         System.out.println("Details for the student with studentnumber: " + this.studentNumber);
-        System.out.println("Study: " + study);
+        System.out.println("Study: " + this.study);
     }
 }
