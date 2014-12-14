@@ -5,14 +5,7 @@ package net.robbytu.hanze.kantine;
  */
 public class Administration
 {
-
     private static final int DAYS_IN_WEEK = 7;
-
-    private Administration()
-    {
-
-    }
-
 
     /**
      * this method calculates the average value of the int
