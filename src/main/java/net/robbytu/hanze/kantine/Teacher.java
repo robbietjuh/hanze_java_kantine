@@ -21,6 +21,8 @@ public class Teacher extends Person
         int tempNumber = random.nextInt(5);
         String[] departments = {"Chemics Lab", "Computer Lab", "Lecture Hall", "Anime room", "Study Hall"};
         this.teacherDepartment = departments[tempNumber];
+
+        this.teacherAbbreviation = "";
         char[] letters = {'A','B','C','D','E','F','G','H','I','j','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
         for(int i = 0; i < 5; i++)
         {
