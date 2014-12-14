@@ -89,59 +89,10 @@ public class CanteenSimulation {
      */
     public void simulate(int days) {
         for(int currentDay = 0; currentDay < days; currentDay ++) {
-            //int amountOfPeopleToLetIn = this.getRandomValue(MIN_PERSONS_PER_DAY, MAX_PERSONS_PER_DAY);
-            int amountOfPeopleToLetIn = 100;
-            /*// Add people in line and put some random articles on their tray
-            for(int personToLetIn = 0; personToLetIn < amountOfPeopleToLetIn; personToLetIn ++) {
-                Person person = new Person();
-                person.setTray(new Tray());
-
-                int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
-                int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, AMOUNT_OF_ARTICLES-1);
-                String[] articles = this.getArticleNames(articlesToPutOnTray);
-
-                canteen.addInLine(person, articles);
-            }*/
-
-            //add 89 students in line and put some random articles on their tray
-            for(int personToLetIn = 0; personToLetIn < 89; personToLetIn ++) {
-                Person person = new Student();
-                person.setTray(new Tray());
-
-                int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
-                int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, AMOUNT_OF_ARTICLES-1);
-                String[] articles = this.getArticleNames(articlesToPutOnTray);
-
-                canteen.addInLine(person, articles);
-                person.printDetails();
-            }
-
-            //add 10 teachers in line and put some random articles on their tray
-            for(int personToLetIn = 0; personToLetIn < 10; personToLetIn ++) {
-                Person person = new Teacher();
-                person.setTray(new Tray());
-
-                int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
-                int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, AMOUNT_OF_ARTICLES-1);
-                String[] articles = this.getArticleNames(articlesToPutOnTray);
-
-                canteen.addInLine(person, articles);
-                person.printDetails();
-            }
-
-            //add 1 canteenemployee in line and put some random articles on their tray
-            for(int personToLetIn = 0; personToLetIn < 1; personToLetIn ++) {
-                Person person = new Student();
-                person.setTray(new Tray());
-
-                int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
-                int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, AMOUNT_OF_ARTICLES-1);
-                String[] articles = this.getArticleNames(articlesToPutOnTray);
-
-                canteen.addInLine(person, articles);
-                person.printDetails();
-            }
-
+            // Put people in line
+            this.simulatePersonEntry("student", 89);
+            this.simulatePersonEntry("teacher", 10);
+            this.simulatePersonEntry("canteenEmployee", 89);
 
             // Process people in line
             this.canteen.processCheckoutLine();
@@ -150,11 +101,32 @@ public class CanteenSimulation {
             int amountOfArticles = this.canteen.getCashRegister().getAmountOfArticles();
             double amountOfMoney = this.canteen.getCashRegister().getAmountOfMoney();
 
-            System.out.println(String.format("On day %d, %d people visited the canteen and %d articles were sold, resulting in a sales volume of %.2f euros",
-                                             currentDay + 1, amountOfPeopleToLetIn, amountOfArticles, amountOfMoney));
+            System.out.println(String.format("On day %d, %d articles were sold, resulting in a sales volume of %.2f euros",
+                                             currentDay + 1, amountOfArticles, amountOfMoney));
 
             // Reset the cash register for 'tomorrow' ;-)
             this.canteen.getCashRegister().resetRegister();
+        }
+    }
+
+    private void simulatePersonEntry(String typeOfPerson, int amountOfPeopleToLetIn) {
+        for(int personToLetIn = 0; personToLetIn < amountOfPeopleToLetIn; personToLetIn ++) {
+            Person person = null;
+
+            if(typeOfPerson.equalsIgnoreCase("student")) person = new Student();
+            else if(typeOfPerson.equalsIgnoreCase("teacher")) person = new Teacher();
+            else if(typeOfPerson.equalsIgnoreCase("canteenEmployee")) person = new CanteenEmployee();
+
+            if(person != null) {
+                person.setTray(new Tray());
+
+                int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
+                int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, AMOUNT_OF_ARTICLES-1);
+                String[] articles = this.getArticleNames(articlesToPutOnTray);
+
+                this.canteen.addInLine(person, articles);
+                person.printDetails();
+            }
         }
     }
 
