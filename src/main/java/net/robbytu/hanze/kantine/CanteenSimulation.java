@@ -136,6 +136,11 @@ public class CanteenSimulation {
             System.out.println(String.format("      %s: %.2f euros", DAYS_PER_WEEK[day], salesPerDay[day]));
     }
 
+    /**
+     * Creates a person complying with the specified type, puts some items onto their
+     * tray and adds it in line.
+     * @param typeOfPerson The type of person. Should be one of "student", "teacher" or "canteenEmployee".
+     */
     private void simulatePersonEntry(String typeOfPerson) {
         Person person = null;
 
