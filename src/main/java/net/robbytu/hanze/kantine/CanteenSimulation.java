@@ -94,10 +94,16 @@ public class CanteenSimulation {
         double salesVolumes[] = new double[days];
 
         for(int currentDay = 0; currentDay < days; currentDay ++) {
-            // Put people in line
-            this.simulatePersonEntry("student", 89);
-            this.simulatePersonEntry("teacher", 10);
-            this.simulatePersonEntry("canteenEmployee", 89);
+            // Let a random amount of people in
+            int peopleToLetIn = this.getRandomValue(MIN_PERSONS_PER_DAY, MAX_PERSONS_PER_DAY);
+            for(int amountOfPeopleLetIn = 0; amountOfPeopleLetIn < peopleToLetIn; amountOfPeopleLetIn++) {
+                // Let a random type of person in
+                int typeOfPerson = this.getRandomValue(1, 100);
+
+                if(typeOfPerson == 1) this.simulatePersonEntry("canteenEmployee");
+                if(typeOfPerson > 1 && typeOfPerson <= 89) this.simulatePersonEntry("student");
+                if(typeOfPerson > 89) this.simulatePersonEntry("teacher");
+            }
 
             // Process people in line
             this.canteen.processCheckoutLine();
@@ -130,24 +136,22 @@ public class CanteenSimulation {
             System.out.println(String.format("      %s: %.2f euros", DAYS_PER_WEEK[day], salesPerDay[day]));
     }
 
-    private void simulatePersonEntry(String typeOfPerson, int amountOfPeopleToLetIn) {
-        for(int personToLetIn = 0; personToLetIn < amountOfPeopleToLetIn; personToLetIn ++) {
-            Person person = null;
+    private void simulatePersonEntry(String typeOfPerson) {
+        Person person = null;
 
-            if(typeOfPerson.equalsIgnoreCase("student")) person = new Student();
-            else if(typeOfPerson.equalsIgnoreCase("teacher")) person = new Teacher();
-            else if(typeOfPerson.equalsIgnoreCase("canteenEmployee")) person = new CanteenEmployee();
+        if(typeOfPerson.equalsIgnoreCase("student")) person = new Student();
+        else if(typeOfPerson.equalsIgnoreCase("teacher")) person = new Teacher();
+        else if(typeOfPerson.equalsIgnoreCase("canteenEmployee")) person = new CanteenEmployee();
 
-            if(person != null) {
-                person.setTray(new Tray());
+        if(person != null) {
+            person.setTray(new Tray());
 
-                int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
-                int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, AMOUNT_OF_ARTICLES-1);
-                String[] articles = this.getArticleNames(articlesToPutOnTray);
+            int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
+            int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, AMOUNT_OF_ARTICLES-1);
+            String[] articles = this.getArticleNames(articlesToPutOnTray);
 
-                this.canteen.addInLine(person, articles);
-                person.printDetails();
-            }
+            this.canteen.addInLine(person, articles);
+            person.printDetails();
         }
     }
 
