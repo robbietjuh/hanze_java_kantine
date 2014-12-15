@@ -30,6 +30,8 @@ public class CanteenSimulation {
     private static final int MIN_ARTICLES_PER_PERSON = 1;
     private static final int MAX_ARTICLES_PER_PERSON = 4;
 
+    private static final String[] DAYS_PER_WEEK = new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday "};
+
     /**
      * Initializes a new instance of the CanteenSimulation class
      */
@@ -88,6 +90,9 @@ public class CanteenSimulation {
      * @param days Amount of days to simulate
      */
     public void simulate(int days) {
+        int salesQuantities[] = new int[days];
+        double salesVolumes[] = new double[days];
+
         for(int currentDay = 0; currentDay < days; currentDay ++) {
             // Put people in line
             this.simulatePersonEntry("student", 89);
@@ -104,9 +109,25 @@ public class CanteenSimulation {
             System.out.println(String.format("On day %d, %d articles were sold, resulting in a sales volume of %.2f euros",
                                              currentDay + 1, amountOfArticles, amountOfMoney));
 
+            // Save information
+            salesQuantities[currentDay] = amountOfArticles;
+            salesVolumes[currentDay] = amountOfMoney;
+
             // Reset the cash register for 'tomorrow' ;-)
             this.canteen.getCashRegister().resetRegister();
         }
+
+        // Print averages
+        System.out.println();
+        System.out.println(" ---- ");
+        System.out.println();
+        System.out.println("  * Average quantity:   " + Math.round(Administration.calculateAverageQuantity(salesQuantities)));
+        System.out.println("  * Average sales:      " + String.format("%.2f euros", Administration.calculateAverageSales(salesVolumes)));
+        System.out.println("  * Average sales per day of the week: ");
+
+        double[] salesPerDay = Administration.calculateDaySale(salesVolumes);
+        for(int day = 0; day < salesPerDay.length; day++)
+            System.out.println(String.format("      %s: %.2f euros", DAYS_PER_WEEK[day], salesPerDay[day]));
     }
 
     private void simulatePersonEntry(String typeOfPerson, int amountOfPeopleToLetIn) {
