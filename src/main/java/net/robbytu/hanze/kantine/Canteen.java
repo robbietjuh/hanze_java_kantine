@@ -20,7 +20,7 @@ public class Canteen {
      */
     public Canteen() {
         this.checkoutLine = new CheckoutLine();
-        this.cashRegister = new CashRegister(this.checkoutLine);
+        this.cashRegister = new CashRegister();
     }
 
     /**

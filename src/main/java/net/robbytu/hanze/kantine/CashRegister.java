@@ -12,18 +12,13 @@ import java.util.Iterator;
  * @license MIT License
  */
 public class CashRegister {
-    private CheckoutLine line;
     private int amountOfArticles;
     private double amountOfMoney;
-    private Person person;
 
     /**
      * Initializes a new instance of the CashRegister class
-     * @param line Corresponding CheckoutLine
      */
-    public CashRegister(CheckoutLine line) {
-        this.line = line;
-
+    public CashRegister() {
         this.resetRegister();
     }
 
@@ -32,21 +27,11 @@ public class CashRegister {
      * @param person Person to check out
      */
     public void checkout(Person person) {
-        this.person = person;
-        this.setAmountOfArticles();
-        this.setAmountOfMoney();
-    }
-
-    /**
-     * Sets Amount Of Articles
-     */
-    public void setAmountOfArticles()
-    {
-        Iterator<Article> articlesIterator = this.person.getTray().getArticleIterator();
+        Iterator<Article> articlesIterator = person.getTray().getArticleIterator();
         while(articlesIterator.hasNext())
         {
+            this.amountOfMoney += articlesIterator.next().getPrice();
             this.amountOfArticles++;
-            articlesIterator.next();
         }
     }
     /**
@@ -55,18 +40,6 @@ public class CashRegister {
      */
     public int getAmountOfArticles() {
         return this.amountOfArticles;
-    }
-
-    /**
-     * Sets Amount Of Money
-     */
-    public void setAmountOfMoney()
-    {
-        Iterator<Article> articlesIterator = this.person.getTray().getArticleIterator();
-        while(articlesIterator.hasNext())
-        {
-            this.amountOfMoney += articlesIterator.next().getPrice();
-        }
     }
 
     /**
