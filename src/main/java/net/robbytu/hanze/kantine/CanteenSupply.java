@@ -19,6 +19,7 @@ public class CanteenSupply {
      * have to be equal;
      */
     public CanteenSupply(String[] articlename, double[] price, int[] quantity) {
+        supply = new HashMap<String, ArrayList<Article>>();
         this.addNewSupply(articlename, price, quantity);
     }
 
@@ -39,14 +40,14 @@ public class CanteenSupply {
         else
         {
             Article article = stack.get(0);
+            stack.remove(0);
 
-            if(stack.size() == 1) {
+            if(stack.size() == 0) {
                 this.addNewSupply(new String[] { article.getName() },
                                   new double[] { article.getPrice() },
                                   new int[] {    10 });
             }
 
-            stack.remove(0);
             return article;
         }
     }
@@ -67,7 +68,6 @@ public class CanteenSupply {
      * @param quantity The quantity to put in
      */
     public void addNewSupply(String[] articlename, double[] price, int[] quantity) {
-        supply = new HashMap<String, ArrayList<Article>>();
         for(int i = 0; i < articlename.length; i++)
         {
             ArrayList<Article> articles = new ArrayList<Article>();
