@@ -32,6 +32,26 @@ public class Teacher extends Person
     }
 
     /**
+     * Initializes a new instance of the Teacher class with the specified properties
+     * @param teacherAbbreviation The teacher's abbreviation
+     * @param teacherDepartment The department this teacher works in
+     * @param bsn National security number
+     * @param firstname First name
+     * @param lastname Last name
+     * @param day Birthdate -- day
+     * @param month Birthdate -- month
+     * @param year Birthdate -- year
+     * @param gender Gender
+     */
+    public Teacher(String teacherAbbreviation, String teacherDepartment,  int bsn, String firstname,
+                   String lastname, int day, int month, int year, char gender) {
+        super(bsn, firstname, lastname, day, month, year, gender);
+
+        this.teacherAbbreviation = teacherAbbreviation;
+        this.teacherDepartment = teacherDepartment;
+    }
+
+    /**
      * Generates a new random abbreviation
      * @param abbrevationLength The length of the abbrevation to generate
      * @param allowedChars The chars to use for generating a new abbreviation
@@ -47,23 +67,35 @@ public class Teacher extends Person
         return abbreviation;
     }
 
-    public String getTeacherAbbreviation()
-    {
+    /**
+     * Returns the teacher's abbrevation
+     * @return The teacher's abbrevation
+     */
+    public String getTeacherAbbreviation() {
         return teacherAbbreviation;
     }
 
-    public void setTeacherAbbreviation(String teacherAbbreviation)
-    {
+    /**
+     * Sets the teacher's abbreviation
+     * @param teacherAbbreviation The teacher's abbreviation
+     */
+    public void setTeacherAbbreviation(String teacherAbbreviation) {
         this.teacherAbbreviation = teacherAbbreviation;
     }
 
-    public String getTeacherDepartment()
-    {
+    /**
+     * Returns the teacher's department
+     * @return The teacher's department
+     */
+    public String getTeacherDepartment() {
         return teacherDepartment;
     }
 
-    public void setTeacherDepartment(String teacherDepartment)
-    {
+    /**
+     * Sets the teacher's department
+     * @param teacherDepartment The teacher's department
+     */
+    public void setTeacherDepartment(String teacherDepartment) {
         this.teacherDepartment = teacherDepartment;
     }
 
@@ -72,9 +104,8 @@ public class Teacher extends Person
      * and prints teacherAbbreviation and teacherDepartment
      */
     @Override
-    public void printDetails()
-    {
+    public void printDetails() {
         System.out.println("Details for the teacher with abbreviation: " + this.teacherAbbreviation);
-        System.out.println("Department: " + teacherDepartment);
+        System.out.println("Department: " + this.teacherDepartment);
     }
 }
