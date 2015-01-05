@@ -44,18 +44,34 @@ public class CanteenEmployee extends Person
         this.canUseCashRegister = canUseCashRegister;
     }
 
+    /**
+     * Returns the employee number
+     * @return Employee number
+     */
     public int getEmployeeNumber() {
         return this.employeeNumber;
     }
 
+    /**
+     * Sets this employee's employee number
+     * @param employeeNumber Employee number
+     */
     public void setEmployeeNumber(int employeeNumber) {
         this.employeeNumber = employeeNumber;
     }
 
+    /**
+     * Returns wether or not this employee is allowed to use the cash register
+     * @return A boolean, indicating wether or not this employee is allowed to use the cash register
+     */
     public boolean getCanUseCashRegister() {
         return this.canUseCashRegister;
     }
 
+    /**
+     * Sets wether or not this employee is allowed to use the cash register
+     * @param canUseCashRegister A boolean indicating wether or not this employee may use the cash register
+     */
     public void setCanUseCashRegister(boolean canUseCashRegister) {
         this.canUseCashRegister = canUseCashRegister;
     }
