@@ -34,6 +34,26 @@ Opgave 2b:
     Een `HashMap` gebruik je in een situatie waarbij je een `key` moet koppelen aan bepaalde `value`. Als je
     enkel `keys` op wil slaan, zonder dat daar een bepaalde `value` aan gekoppeld moet worden, gebruik je een `HashSet`.
 
+Opgave 3a:
+    De constructor van de `CanteenSimulation` stelt eerst de initiele objecten samen die nodig zijn voor een juiste werking
+    van de rest van de klasse. Hieronder vallen de kantine en de random generator.
+
+    Nadat de initiele objecten geinitialiseerd zijn wordt een random hoeveelheid producten berekent. Dit gebeurd
+    door het aanroepen van de `getRandomArray` functie. De constants `AMOUNT_OF_ARTICLES`, `MIN_ARTICLES_PER_TYPE`
+    en `MAX_ARTICLES_PER_TYPE` worden doorgegeven om de random hoeveelheden te beperken.
+
+    Hierna wordt er een nieuw aanbod geinitialiseerd, welke aan de kantine aangewezen wordt. Vanaf dit punt is het
+    aan de caller om de simulatie aldanniet te starten met een aanroep naar `simulate`.
+
+Opgave 3b:
+    Wanneer we met de Random generator van Java een getal laten vallen, kunnen we dat doen met de functie `nextInt`.
+    De functie `getRandomValue` maakt daar gebruik van. Bij het laten van een getal, is het mogelijk een maximum
+    op te geven. Java gebruikt het getal dat als eerste paramter doorgepassed wordt, als maximum voor het laten vallen
+    van de random integer. Het is echter belangrijk om te weten dat het getal niet inclusief is, maar exclusief.
+
+    Als men 8 meegeeft, zal het getal 7 het laatste getal zijn dat vallen kan. 8 telt niet mee. Om deze reden tellen
+    we 1 bij het maximum op.
+
 Week opdracht #4
 ================
 
