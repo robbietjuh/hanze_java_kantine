@@ -5,13 +5,18 @@ package net.robbytu.hanze.kantine;
  */
 public class Administration
 {
+    /**
+     * Amount of days in one week
+     */
     private static final int DAYS_IN_WEEK = 7;
 
+    private Administration() {
+    }
+
     /**
-     * this method calculates the average value of the int
-     * array quantity
-     * @param quantity
-     * @return the average
+     * Calculates the average value of the quantities given
+     * @param quantity An array of integers representing a quantity
+     * @return Average quantity
      */
     public static double calculateAverageQuantity(int[] quantity)
     {
@@ -24,10 +29,9 @@ public class Administration
     }
 
     /**
-     * This method calculates the average value of the double array
-     * sales
-     * @param sales
-     * @return the average
+     * Calculates the average sale from the given sales
+     * @param sales An array of doubles representing sales
+     * @return Average sale
      */
     public static double calculateAverageSales(double[] sales)
     {
@@ -40,9 +44,9 @@ public class Administration
     }
 
     /**
-     * This method calculates the day sale
-     * @param sales
-     * @return array (7 elements) with day sales
+     * Calculates the amount of sales per day of the week
+     * @param sales An array of sales
+     * @return array Sales per day of the week, @see DAYS_IN_WEEK
      */
     public static double[] calculateDaySale(double[] sales)
     {
