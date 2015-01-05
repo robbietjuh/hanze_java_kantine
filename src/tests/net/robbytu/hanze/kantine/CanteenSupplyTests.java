@@ -34,8 +34,8 @@ public class CanteenSupplyTests {
         // Fetch an article and see if it is still in stock
         generatedArticle = supply.getArticle("Apple");
 
-        assertThat("The article returned was null because it's out of stock",
-                   generatedArticle, equalTo(null));
+        assertThat("The article returned was not null because it was added again to the supply",
+                   generatedArticle, not(equalTo(null)));
 
         // Fetch an article and see if it is still in stock
         generatedArticle = supply.getArticle("Banana");
