@@ -7,6 +7,14 @@ import java.util.Random;
  */
 public class Teacher extends Person
 {
+    private static final String[] DEPARTMENTS = {"Chemics Lab", "Computer Lab", "Lecture Hall",
+                                                 "Anime room", "Study Hall"};
+
+    private static final char[] ALLOWED_ABBREVIATION_CHARS = {'A','B','C','D','E','F','G','H','I','j','K','L','M','N',
+                                                              'O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
+    private static final int ABBREVIATION_LENGTH = 5;
+
     private String teacherAbbreviation;
     private String teacherDepartment;
 
@@ -14,36 +22,29 @@ public class Teacher extends Person
      * Initializes a new instance of the Teacher class
      * without any parameters
      */
-    public Teacher()
-    {
-
-        Random random = new Random();
-        int tempNumber = random.nextInt(5);
-        String[] departments = {"Chemics Lab", "Computer Lab", "Lecture Hall", "Anime room", "Study Hall"};
-        this.teacherDepartment = departments[tempNumber];
-
-        this.teacherAbbreviation = "";
-        char[] letters = {'A','B','C','D','E','F','G','H','I','j','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-        for(int i = 0; i < 5; i++)
-        {
-            tempNumber = random.nextInt(26);
-            teacherAbbreviation += letters[tempNumber];
-        }
-    }
-    
-    public Teacher(String teacherAbbreviation, String teacherDepartment,  int bsn, String firstname, String lastname, int day, int month, int year, char gender)
-    {
+    public Teacher() {
         super();
 
-        setBsn(bsn);
-        setFirstname(firstname);
-        setLastname(lastname);
-        setBirthdate(day, month, year);
-        setGender(gender);
+        Random random = new Random();
 
+        this.teacherDepartment = DEPARTMENTS[random.nextInt(DEPARTMENTS.length + 1)];
+        this.teacherAbbreviation = this.generateTeacherAbbreviation(ABBREVIATION_LENGTH, ALLOWED_ABBREVIATION_CHARS);
+    }
 
-        this.teacherAbbreviation = teacherAbbreviation;
-        this.teacherDepartment = teacherDepartment;
+    /**
+     * Generates a new random abbreviation
+     * @param abbrevationLength The length of the abbrevation to generate
+     * @param allowedChars The chars to use for generating a new abbreviation
+     * @return Teacher abbrevation
+     */
+    private String generateTeacherAbbreviation(int abbrevationLength, char[] allowedChars) {
+        String abbreviation = "";
+        Random random = new Random();
+
+        for(int i = 0; i < abbrevationLength; i++)
+            teacherAbbreviation += allowedChars[random.nextInt(allowedChars.length + 1)];
+
+        return abbreviation;
     }
 
     public String getTeacherAbbreviation()
