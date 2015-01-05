@@ -17,27 +17,20 @@ public class CanteenEmployee extends Person
     public CanteenEmployee()
     {
         Random random = new Random();
-        employeeNumber = random.nextInt(9999 - 1000) + 1000;
-        int tempInt = random.nextInt(2);
-        if(tempInt == 0)
-        {
-            canUseCashRegister = false;
-        }
-        else
-        {
-            canUseCashRegister = true;
-        }
+
+        this.employeeNumber = random.nextInt(9999 - 1000) + 1000;
+        this.canUseCashRegister = (random.nextInt(2) == 0);
     }
 
     public CanteenEmployee(int employeeNumber, boolean canUseCashRegister,  int bsn, String firstname, String lastname, int day, int month, int year, char gender)
     {
         super();
 
-        setBsn(bsn);
-        setFirstname(firstname);
-        setLastname(lastname);
-        setBirthdate(day, month, year);
-        setGender(gender);
+        this.setBsn(bsn);
+        this.setFirstname(firstname);
+        this.setLastname(lastname);
+        this.setBirthdate(day, month, year);
+        this.setGender(gender);
 
         this.employeeNumber = employeeNumber;
         this.canUseCashRegister = canUseCashRegister;
@@ -45,7 +38,7 @@ public class CanteenEmployee extends Person
 
     public int getEmployeeNumber()
     {
-        return employeeNumber;
+        return this.employeeNumber;
     }
 
     public void setEmployeeNumber(int employeeNumber)
@@ -53,9 +46,9 @@ public class CanteenEmployee extends Person
         this.employeeNumber = employeeNumber;
     }
 
-    public boolean isCanUseCashRegister()
+    public boolean getCanUseCashRegister()
     {
-        return canUseCashRegister;
+        return this.canUseCashRegister;
     }
 
     public void setCanUseCashRegister(boolean canUseCashRegister)
@@ -71,6 +64,6 @@ public class CanteenEmployee extends Person
     public void printDetails()
     {
         System.out.println("Details for the canteen employee with employeenumber: " + this.employeeNumber);
-        System.out.println("Is allowed to use cashregister?: " + canUseCashRegister);
+        System.out.println("This employee " + (canUseCashRegister ? "is" : "is not") + " allowed to operate the cash register.");
     }
 }
