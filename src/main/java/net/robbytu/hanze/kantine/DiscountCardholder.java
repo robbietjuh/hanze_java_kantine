@@ -11,8 +11,22 @@ package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 s
  */
 public interface DiscountCardholder {
 
+    /**
+     * Returns the discount percentage this person gets
+     * @return Discount percentage
+     */
     public double getDiscountPercentage();
+
+    /**
+     * Returns wether there is a limit for the discount being given
+     * @return Wether there is a limit
+     */
     public boolean hasDiscountLimit();
+
+    /**
+     * Returns the limit set for the discount in euros
+     * @return Limit in euros
+     */
     public double getDiscountLimit();
 
 }
