@@ -82,3 +82,70 @@ Opgave 1j
 Opgave 2b
     Als deze niet boven aan staat is het niet mogelijk om de variabelen van de super klasse te gebruiken
     omdat ze niet geinitialiseerd zijn.
+
+Week opdracht #5
+================
+
+Opgave 1c
+    Als je de equals methode gebruikt werkt het wel maar als je de == gebruikt werkt het niet, dan zijn ze niet identiek
+    aan elkaar.
+
+Opgave 1d
+    Dit ligt aan wanneer de strings gemaakt zijn, als de strings gemaakt zijn voor het compilen dus niet
+    tijden runtime dan kun je gerust == gebruiken maar zijn de strings gemaakt tijdens runtime met
+    new String() dan moet je .equals gebruiken anders werkt het niet.
+
+Opgave 2b
+
+
+Opgave 2c
+    Dit is gedaan zodat een andere klasse deze variable niet aan kan passen. Dit is handig
+    omdat als je hem private had gemaakt een subklasse er niet bij kon en dat kan nu wel.
+
+Opgave 5a
+    Je kan geen instantie maken van een interface via new. Het is logisch dat dit niet kan
+    want een interface is abstract.
+
+Opgave 5b
+    Je kan geen instantie maken van een abstracte klasse via new. Het is logisch dat dit niet kan
+    want een abstracte klasse is abstract.
+
+Opgave 5c
+    Nee een klasse kan niet meerdere klassen overerven.
+
+Opgave 5d
+    Ja een klasse kan meerdere interfaces implementeren.
+
+Opgave 5e
+    Ja een klasse kan een interfaces implementeren en een klasse overerven.
+
+Opgave 5f
+    Ja want je implementeert niks.
+
+Opgave 5g
+    Ja de klasse moet abstract zijn als minstens één methode abstract is want anders krijg je compileer
+    fouten
+
+Opgave 5h
+    Polymorfisme betekent dat het zich voor doet op het moment dat je logisch
+    gezien dezelfde handeling uitvoort maar deze technisch gezien
+    van elkaar verschillen
+
+Opgave 6a
+    Ja dat kan. Want een abstracte klasse is voor de rest
+    bijna hetzelfde als een normale klasse
+
+Opgave 6b
+    Ja dat moet want in de abstracte klasse is de body van de abstracte methode niet
+    gedefineerd dus als je dat niet hoefde te doen heb je een zinloze methode.
+
+Opgave 6c
+    Een throw new NotImplementedException() toevoegen, deze oplossing is logisch omdat je dan gewoon een
+    exception krijgt en geen compiler fout
+
+Opgave 6d
+    Het is geinitialiseerd dus kan niet abstract zijn
+
+Opgave 6e
+    Het is abstract dus is niet geinitaliseerd en omdat het dan ook
+    final is kan het niet eens geinitaliseerd worden.
