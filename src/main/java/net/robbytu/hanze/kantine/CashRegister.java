@@ -38,6 +38,18 @@ public class CashRegister {
             amountOfArticlesDue ++;
         }
 
+        // Check wether this person gets a discount. If so, re-calculate amount due
+        if(person instanceof DiscountCardholder) {
+            DiscountCardholder discountCardholder = (DiscountCardholder) person;
+
+            double discountLimit = discountCardholder.getDiscountLimit();
+            double discountInEur = amountOfMoneyDue * (1 - (discountCardholder.getDiscountPercentage() / 100));
+
+            if(discountInEur > discountLimit) discountInEur = discountLimit;
+
+            amountOfMoneyDue -= discountInEur;
+        }
+
         /* Ask for a payment provider and try to withdraw the amount due:
          *
          *   -   If no payment provider is present, cancel the checkout
