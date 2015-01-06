@@ -28,6 +28,13 @@ public class DebitcardPaymentMethod extends PaymentMethod {
      */
     @Override
     public boolean pay(double due) {
+        // Check wether we can afford this...
+        if(due <= (this.balance + this.creditLimit)) {
+            this.balance -= due;
+            return true;
+        }
+
+        // Seems like we can't
         return false;
     }
 
