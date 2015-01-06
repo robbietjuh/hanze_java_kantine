@@ -27,15 +27,24 @@ public class CashRegister {
      * @param person Person to check out
      */
     public void checkout(Person person) {
+        // Set up an initial environment
         Iterator<Article> articlesIterator = person.getTray().getArticleIterator();
         double amountOfMoneyDue = 0;
         int amountOfArticlesDue = 0;
 
+        // Loop through all articles and calculate the price
         while(articlesIterator.hasNext()) {
             amountOfMoneyDue += articlesIterator.next().getPrice();
             amountOfArticlesDue ++;
         }
 
+        /* Ask for a payment provider and try to withdraw the amount due:
+         *
+         *   -   If no payment provider is present, cancel the checkout
+         *   -   If the payment fails, cancel the checkout
+         *
+         *   +   If the payment succeeds, calculate our new gross and sales
+         */
         if(person.getPaymentMethod() != null && person.getPaymentMethod().pay(amountOfMoneyDue)) {
             this.amountOfMoney += amountOfMoneyDue;
             this.amountOfArticles += amountOfArticlesDue;
