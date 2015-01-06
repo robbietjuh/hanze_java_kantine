@@ -17,7 +17,7 @@ import static org.hamcrest.CoreMatchers.*;
 public class CashRegisterTests {
 
     @Test
-    public void testCheckout() {
+    public void testNormalCheckout() {
         // Set up initial environment
         CashRegister cashregister = new CashRegister();
         cashregister.resetRegister();
@@ -45,17 +45,30 @@ public class CashRegisterTests {
 
         assertThat("The amount of money in the cash register is equal to 7.50 EUR",
                    cashregister.getAmountOfMoney(), equalTo(7.50));
+    }
+
+    @Test
+    public void testExpensiveCheckout() {
+        // Set up initial environment
+        CashRegister cashregister = new CashRegister();
+        cashregister.resetRegister();
+        Tray tray;
+
+        // Create a person and give it a tray
+        Person person = new Person(1234, "Robert", "de Vries", 11, 10, 1996, 'M');
+        person.setTray(new Tray());
 
         // Now assign a product that's way too expensive
+        tray = person.getTray();
         tray.addArticle(new Article("Capybara", 85.00)); // Check out a capybara at http://kwieb.com !
 
         // Checkout
         cashregister.checkout(person);
 
-        assertThat("Still 2 articles that have passed the cash register",
-                   cashregister.getAmountOfArticles(), equalTo(2));
+        assertThat("No articles have passed the cash register",
+                   cashregister.getAmountOfArticles(), equalTo(0));
 
-        assertThat("Still 7.50 euros in the cash register",
-                   cashregister.getAmountOfMoney(), equalTo(7.50));
+        assertThat("There are 0 euros in the cash register",
+                   cashregister.getAmountOfMoney(), equalTo(0.0));
     }
 }
