@@ -215,4 +215,41 @@ public class Person {
                " * Birthdate:     " + this.getBirthdate() + "\n" +
                " * Gender:        " + this.getGender();
     }
+
+
+    /**
+     * Compares objects
+     * @param object to compare
+     * @return true or false
+     */
+    @Override
+    public boolean equals(Object object)
+    {
+        if(this == object) return true;
+        if(!(object instanceof Person)) return false;
+
+        Person person = (Person) object;
+
+        if(!(toString().equals(object.toString()))) return false;
+        if (paymentMethod != null ? !paymentMethod.equals(person.paymentMethod) : person.paymentMethod != null)
+            return false;
+        if (tray != null ? !tray.equals(person.tray) : person.tray != null) return false;
+
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
