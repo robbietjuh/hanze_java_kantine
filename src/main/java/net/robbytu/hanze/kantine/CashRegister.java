@@ -28,10 +28,21 @@ public class CashRegister {
      */
     public void checkout(Person person) {
         Iterator<Article> articlesIterator = person.getTray().getArticleIterator();
-        while(articlesIterator.hasNext())
-        {
-            this.amountOfMoney += articlesIterator.next().getPrice();
-            this.amountOfArticles++;
+        double amountOfMoneyDue = 0;
+        int amountOfArticlesDue = 0;
+
+        while(articlesIterator.hasNext()) {
+            amountOfMoneyDue += articlesIterator.next().getPrice();
+            amountOfArticlesDue ++;
+        }
+
+        if(person.getPaymentMethod() != null && person.getPaymentMethod().pay(amountOfMoneyDue)) {
+            this.amountOfMoney += amountOfMoneyDue;
+            this.amountOfArticles += amountOfArticlesDue;
+        }
+        else {
+            System.out.println("Unsuccesful checkout: " + person.getFirstname() + " " + person.getLastname() +
+                               " did not have enough money.");
         }
     }
 
