@@ -43,9 +43,10 @@ public class CashRegister {
             DiscountCardholder discountCardholder = (DiscountCardholder) person;
 
             double discountLimit = discountCardholder.getDiscountLimit();
-            double discountInEur = amountOfMoneyDue * (1 - (discountCardholder.getDiscountPercentage() / 100));
+            double discountInEur = amountOfMoneyDue * (discountCardholder.getDiscountPercentage() / 100);
 
-            if(discountInEur > discountLimit) discountInEur = discountLimit;
+            if(discountCardholder.hasDiscountLimit() && discountInEur > discountLimit)
+                discountInEur = discountLimit;
 
             amountOfMoneyDue -= discountInEur;
         }
