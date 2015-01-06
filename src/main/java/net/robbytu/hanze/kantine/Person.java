@@ -189,6 +189,17 @@ public class Person {
      * @return Payment method
      */
     public PaymentMethod getPaymentMethod() {
+        if(this.paymentMethod == null) {
+            // TODO: There is no mention of giving people that come into our canteen a wallet or any initial balance.
+            // They will get rejected at the checkout! To keep the canteen simulation from rejecting every single
+            // person that tries to check out, we'll assign a default wallet here with a balance of 50 euros if no
+            // wallet has been set for this person.
+
+            PaymentMethod wallet = new CashPaymentMethod();
+            wallet.setBalance(50.00);
+            this.paymentMethod = wallet;
+        }
+
         return this.paymentMethod;
     }
 
