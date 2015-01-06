@@ -34,6 +34,7 @@ public class CashRegister {
             this.amountOfArticles++;
         }
     }
+
     /**
      * Returns the amount of articles that have passed the register since the last reset
      * @return Amount of articles that have have passed the register
@@ -47,7 +48,6 @@ public class CashRegister {
      * @return Amount of money in the register
      */
     public double getAmountOfMoney() {
-
         return this.amountOfMoney;
     }
 

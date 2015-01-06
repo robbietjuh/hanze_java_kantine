@@ -123,7 +123,7 @@ public class CanteenSimulation {
             this.canteen.getCashRegister().resetRegister();
         }
 
-        // Print averages
+        // Print statistics
         System.out.println();
         System.out.println(" ---- ");
         System.out.println();

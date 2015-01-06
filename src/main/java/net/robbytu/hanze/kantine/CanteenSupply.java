@@ -7,10 +7,7 @@ import java.util.HashMap;
  * Created by Dylan on 3-12-2014.
  */
 public class CanteenSupply {
-
-    // internal supply
     private HashMap<String, ArrayList<Article>> supply;
-
 
     /**
      * Constructor. The First paremet is a list with article names,
