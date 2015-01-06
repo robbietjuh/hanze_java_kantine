@@ -19,13 +19,13 @@ public class Person {
     private int year;
     private char gender;
     private Tray tray;
+    private PaymentMethod paymentMethod;
 
     /**
      * Initializes a new instance of the Person class
      * without any parameters
      */
-    public Person()
-    {
+    public Person() {
         this.setGender('O');
         this.setBirthdate(0, 0, 0);
     }
@@ -107,11 +107,28 @@ public class Person {
     }
 
     /**
+     * Set a Tray to Person
+     * @param tray A tray
+     */
+    public void setTray(Tray tray) {
+        this.tray = tray;
+    }
+
+
+    /**
      * Sets the gender.
      * @param gender Gender. Should be one of 'M' or 'W'
      */
     public void setGender(char gender) {
         this.gender = (gender == 'M' || gender == 'W') ? gender : 'N';
+    }
+
+    /**
+     * Sets the payment method
+     * @param paymentMethod Payment method to use
+     */
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     /**
@@ -160,6 +177,22 @@ public class Person {
     }
 
     /**
+     * Returns the tray
+     * @return tray
+     */
+    public Tray getTray() {
+        return this.tray;
+    }
+
+    /**
+     * Returns the payment method associated with this person
+     * @return Payment method
+     */
+    public PaymentMethod getPaymentMethod() {
+        return this.paymentMethod;
+    }
+
+    /**
      * Returns details about this person
      * @return Details about this person
      */
@@ -170,22 +203,5 @@ public class Person {
                " * Last name:     " + this.getLastname() + "\n" +
                " * Birthdate:     " + this.getBirthdate() + "\n" +
                " * Gender:        " + this.getGender();
-    }
-
-    /**
-     * Set a Tray to Person
-     * @param tray A tray
-     */
-    public void setTray(Tray tray) {
-        this.tray = tray;
-    }
-
-    /**
-     * Returns the tray
-     * @return tray
-     */
-    public Tray getTray()
-    {
-        return this.tray;
     }
 }
