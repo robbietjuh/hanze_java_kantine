@@ -11,6 +11,16 @@ package net.robbytu.hanze.kantine;/* vim: set expandtab tabstop=4 shiftwidth=4 s
  */
 public class DebitcardPaymentMethod extends PaymentMethod {
 
+    private double creditLimit;
+
+    /**
+     * Sets the credit limit for this debit card
+     * @param limit Limit in euros
+     */
+    public void setCreditLimit(double limit) {
+        this.creditLimit = limit;
+    }
+
     /**
      * Perform a payment
      * @param due Amount due
