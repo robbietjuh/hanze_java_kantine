@@ -163,6 +163,7 @@ public class Person {
      * Returns details about this person
      * @return Details about this person
      */
+    @Override
     public String toString() {
         return "Details for the person with national security number " + this.getBsn() + ":\n" +
                " * First name:    " + this.getFirstname() + "\n" +

@@ -69,6 +69,7 @@ public class Article {
     /**
      * Returns details about this article
      */
+    @Override
     public String toString() {
         return String.format("This article was named '%s' and costs %.2f euros", this.getName(), this.getPrice());
     }
