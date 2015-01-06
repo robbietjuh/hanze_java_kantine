@@ -81,8 +81,8 @@ public class CanteenEmployee extends Person
      * and prints employeeNumber and canUseCashRegister
      */
     @Override
-    public void printDetails() {
-        System.out.println("Details for the canteen employee with employeenumber: " + this.employeeNumber);
-        System.out.println("This employee " + (canUseCashRegister ? "is" : "is not") + " allowed to operate the cash register.");
+    public String toString() {
+        return "Details for the canteen employee with employeenumber: " + this.employeeNumber + "\n" +
+               "This employee " + (canUseCashRegister ? "is" : "is not") + " allowed to operate the cash register.";
     }
 }

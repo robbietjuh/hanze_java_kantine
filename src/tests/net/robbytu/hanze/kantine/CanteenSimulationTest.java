@@ -17,6 +17,6 @@ public class CanteenSimulationTest {
     @Test
     public void testSimulation() {
         CanteenSimulation simulation = new CanteenSimulation();
-        simulation.simulate(10);
+        simulation.simulate(30);
     }
 }

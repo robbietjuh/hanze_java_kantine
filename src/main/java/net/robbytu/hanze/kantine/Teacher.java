@@ -27,7 +27,7 @@ public class Teacher extends Person
 
         Random random = new Random();
 
-        this.teacherDepartment = DEPARTMENTS[random.nextInt(DEPARTMENTS.length + 1)];
+        this.teacherDepartment = DEPARTMENTS[random.nextInt(DEPARTMENTS.length)];
         this.teacherAbbreviation = this.generateTeacherAbbreviation(ABBREVIATION_LENGTH, ALLOWED_ABBREVIATION_CHARS);
     }
 
@@ -62,7 +62,7 @@ public class Teacher extends Person
         Random random = new Random();
 
         for(int i = 0; i < abbrevationLength; i++)
-            teacherAbbreviation += allowedChars[random.nextInt(allowedChars.length + 1)];
+            abbreviation += allowedChars[random.nextInt(allowedChars.length)];
 
         return abbreviation;
     }
@@ -100,12 +100,12 @@ public class Teacher extends Person
     }
 
     /**
-     * This method overrides the method in Person
-     * and prints teacherAbbreviation and teacherDepartment
+     * Returns teacherAbbreviation and teacherDepartment
+     * @return teacherAbbreviation and teacherDepartment
      */
     @Override
-    public void printDetails() {
-        System.out.println("Details for the teacher with abbreviation: " + this.teacherAbbreviation);
-        System.out.println("Department: " + this.teacherDepartment);
+    public String toString() {
+        return "Details for the teacher with abbreviation: " + this.teacherAbbreviation + "\n" +
+               "Department: " + this.teacherDepartment;
     }
 }

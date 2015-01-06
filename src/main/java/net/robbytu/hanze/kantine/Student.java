@@ -79,12 +79,12 @@ public class Student extends Person
     }
 
     /**
-     * This method overrides the method in Person
-     * and prints studentNumber and study
+     * Returns studentNumber and study
+     * @return studentNumber and study
      */
     @Override
-    public void printDetails() {
-        System.out.println("Details for the student with studentnumber: " + this.studentNumber);
-        System.out.println("This person is studying " + this.study);
+    public String toString() {
+        return "Details for the student with studentnumber: " + this.studentNumber + "\n" +
+               "This person is studying " + this.study;
     }
 }

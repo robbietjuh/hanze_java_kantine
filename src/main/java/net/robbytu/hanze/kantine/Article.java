@@ -67,10 +67,9 @@ public class Article {
     }
 
     /**
-     * Prints details about this article into stdout
+     * Returns details about this article
      */
-    public void printInfo() {
-        System.out.println(String.format("This article was named '%s' and costs %.2f euros",
-                this.getName(), this.getPrice()));
+    public String toString() {
+        return String.format("This article was named '%s' and costs %.2f euros", this.getName(), this.getPrice());
     }
 }

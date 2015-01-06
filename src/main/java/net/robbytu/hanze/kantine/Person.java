@@ -160,14 +160,15 @@ public class Person {
     }
 
     /**
-     * Prints details about this person into stdout
+     * Returns details about this person
+     * @return Details about this person
      */
-    public void printDetails() {
-        System.out.println("Details for the person with national security number " + this.getBsn() + ": ");
-        System.out.println(" * First name:    " + this.getFirstname());
-        System.out.println(" * Last name:     " + this.getLastname());
-        System.out.println(" * Birthdate:     " + this.getBirthdate());
-        System.out.println(" * Gender:        " + this.getGender());
+    public String toString() {
+        return "Details for the person with national security number " + this.getBsn() + ":\n" +
+               " * First name:    " + this.getFirstname() + "\n" +
+               " * Last name:     " + this.getLastname() + "\n" +
+               " * Birthdate:     " + this.getBirthdate() + "\n" +
+               " * Gender:        " + this.getGender();
     }
 
     /**

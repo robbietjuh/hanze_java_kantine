@@ -22,28 +22,12 @@ import static org.hamcrest.CoreMatchers.*;
  */
 public class ArticleTests {
 
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-
-    @Before
-    public void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-    }
     @Test
     public void testArticleDetails() {
         Article article = new Article("Banana", 5.00);
 
-        article.printInfo();
-
         assertThat("Article details are formatted correctly",
-                   outContent.toString().replaceAll("\r\n", "\n"), equalTo("This article was named 'Banana' and costs 5,00 euros\n"));
-    }
-
-    @After
-    public void cleanUpStreams() {
-        System.setOut(null);
-        System.setErr(null);
+                   article.toString(), equalTo("This article was named 'Banana' and costs 5,00 euros"));
     }
 
 }

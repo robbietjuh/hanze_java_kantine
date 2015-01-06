@@ -156,7 +156,7 @@ public class CanteenSimulation {
             String[] articles = this.getArticleNames(articlesToPutOnTray);
 
             this.canteen.addInLine(person, articles);
-            person.printDetails();
+            System.out.println(person.toString());
         }
     }
 
