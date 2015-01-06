@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by Dylan on 12-12-2014.
  */
-public class Teacher extends Person
+public class Teacher extends Person implements DiscountCardholder
 {
     private static final String[] DEPARTMENTS = {"Chemics Lab", "Computer Lab", "Lecture Hall",
                                                  "Anime room", "Study Hall"};
@@ -107,5 +107,32 @@ public class Teacher extends Person
     public String toString() {
         return "Details for the teacher with abbreviation: " + this.teacherAbbreviation + "\n" +
                "Department: " + this.teacherDepartment;
+    }
+
+    /**
+     * Returns the discount percentage this person gets
+     * @return Discount percentage
+     */
+    @Override
+    public double getDiscountPercentage() {
+        return 25.0;
+    }
+
+    /**
+     * Returns wether there is a limit for the discount being given
+     * @return Wether there is a limit
+     */
+    @Override
+    public boolean hasDiscountLimit() {
+        return true;
+    }
+
+    /**
+     * Returns the limit set for the discount in euros
+     * @return Limit in euros
+     */
+    @Override
+    public double getDiscountLimit() {
+        return 1.0;
     }
 }

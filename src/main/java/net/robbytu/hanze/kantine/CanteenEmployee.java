@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by Dylan on 12-12-2014.
  */
-public class CanteenEmployee extends Person
+public class CanteenEmployee extends Person implements DiscountCardholder
 {
     private int employeeNumber;
     private boolean canUseCashRegister;
@@ -84,5 +84,32 @@ public class CanteenEmployee extends Person
     public String toString() {
         return "Details for the canteen employee with employeenumber: " + this.employeeNumber + "\n" +
                "This employee " + (canUseCashRegister ? "is" : "is not") + " allowed to operate the cash register.";
+    }
+
+    /**
+     * Returns the discount percentage this person gets
+     * @return Discount percentage
+     */
+    @Override
+    public double getDiscountPercentage() {
+        return 35.0;
+    }
+
+    /**
+     * Returns wether there is a limit for the discount being given
+     * @return Wether there is a limit
+     */
+    @Override
+    public boolean hasDiscountLimit() {
+        return false;
+    }
+
+    /**
+     * Returns the limit set for the discount in euros
+     * @return Limit in euros
+     */
+    @Override
+    public double getDiscountLimit() {
+        return 0;
     }
 }
