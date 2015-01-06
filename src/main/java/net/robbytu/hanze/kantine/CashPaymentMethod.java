@@ -18,6 +18,13 @@ public class CashPaymentMethod extends PaymentMethod {
      */
     @Override
     public boolean pay(double due) {
+        // Check if we can afford this...
+        if(due <= this.balance) {
+            this.balance -= due;
+            return true;
+        }
+
+        // Seems like we can't
         return false;
     }
 
