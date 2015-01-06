@@ -25,10 +25,15 @@ public class CanteenTests {
                                                  new int[]    { 5,       2,        10      }); // Article quantities
         canteen.setCanteenSupply(supply);
 
+        // Create a payment provider for this test
+        CashPaymentMethod wallet = new CashPaymentMethod();
+        wallet.setBalance(3500.00);
+
         // Reset the cash register and check out 1 person
         canteen.getCashRegister().resetRegister();
         Person person = new Person();
         person.setTray(new Tray());
+        person.setPaymentMethod(wallet);
         canteen.addInLine(person, new String[]{ "Apple", "Banana" });
         canteen.processCheckoutLine();
 
@@ -45,6 +50,9 @@ public class CanteenTests {
 
         person1.setTray(new Tray());
         person2.setTray(new Tray());
+
+        person1.setPaymentMethod(wallet);
+        person2.setPaymentMethod(wallet);
 
         canteen.addInLine(person1, new String[]{ "Apple", "Banana" });
         canteen.addInLine(person2, new String[]{ "Bread", "Apple" });
