@@ -26,5 +26,5 @@ public abstract class PaymentMethod {
      * @param due Amount due
      * @return Wether or not the payment succeeded
      */
-    public abstract boolean pay(double due);
+    public abstract void pay(double due) throws TooLittleMoneyException;
 }
