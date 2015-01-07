@@ -33,9 +33,10 @@ public class DebitcardPaymentMethod extends PaymentMethod {
         if(due <= (this.balance + this.creditLimit)) {
             this.balance -= due;
         }
-
-        // Seems like we can't
-        throw new TooLittleMoneyException();
+        else {
+            // Seems like we can't
+            throw new TooLittleMoneyException();
+        }
     }
 
 }

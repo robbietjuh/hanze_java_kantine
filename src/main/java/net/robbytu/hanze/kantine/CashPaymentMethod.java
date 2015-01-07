@@ -23,9 +23,10 @@ public class CashPaymentMethod extends PaymentMethod {
         if(due <= this.balance) {
             this.balance -= due;
         }
-
-        // Seems like we can't
-        throw new TooLittleMoneyException();
+        else {
+            // Seems like we can't
+            throw new TooLittleMoneyException();
+        }
     }
 
 }
