@@ -5,5 +5,18 @@ package net.robbytu.hanze.kantine;
  */
 public class TooLittleMoneyException extends Exception
 {
+    public TooLittleMoneyException()
+    {
+        super();
+    }
 
+    public TooLittleMoneyException(Exception e)
+    {
+        super(e);
+    }
+
+    public TooLittleMoneyException(String Message)
+    {
+        super(Message);
+    }
 }
