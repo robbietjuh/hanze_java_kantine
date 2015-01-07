@@ -17,15 +17,15 @@ public class CashPaymentMethod extends PaymentMethod {
      * @return Wether or not the payment succeeded
      */
     @Override
-    public boolean pay(double due) {
+    public void pay(double due) throws TooLittleMoneyException
+    {
         // Check if we can afford this...
         if(due <= this.balance) {
             this.balance -= due;
-            return true;
         }
 
         // Seems like we can't
-        return false;
+        throw new TooLittleMoneyException();
     }
 
 }
