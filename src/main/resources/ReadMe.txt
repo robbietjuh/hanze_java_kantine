@@ -91,9 +91,9 @@ Opgave 1c
     aan elkaar.
 
 Opgave 1d
-    Dit ligt aan wanneer de strings gemaakt zijn, als de strings gemaakt zijn voor het compilen dus niet
-    tijden runtime dan kun je gerust == gebruiken maar zijn de strings gemaakt tijdens runtime met
-    new String() dan moet je .equals gebruiken anders werkt het niet.
+    Bij het gebruik van == worden de objecten 'raw' met elkaar vergeleken. Omdat het in dit geval gaat om
+    twee verschillende objecten (aldanniet met dezelfde properties e.d.), zal het adres in het geheugen verschillen.
+    Dit zal ervoor zorgen dat een vergelijking met == niet werkt: de memory addresses komen niet overeen.
 
 Opgave 2b
 
