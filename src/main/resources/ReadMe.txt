@@ -96,7 +96,7 @@ Opgave 1d
     Dit zal ervoor zorgen dat een vergelijking met == niet werkt: de memory addresses komen niet overeen.
 
 Opgave 2b
-
+    Zie /src/main/resources/DebitcardPaymentMethod.pay(double).jpg
 
 Opgave 2c
     Dit is gedaan zodat een andere klasse deze variable niet aan kan passen. Dit is handig
@@ -104,48 +104,55 @@ Opgave 2c
 
 Opgave 5a
     Je kan geen instantie maken van een interface via new. Het is logisch dat dit niet kan
-    want een interface is abstract.
+    want een interface is abstract en implementeert helemaal niets; het is enkel een soort
+    definitie, een lijdraad voor het opstellen van een echte klasse.
 
 Opgave 5b
     Je kan geen instantie maken van een abstracte klasse via new. Het is logisch dat dit niet kan
     want een abstracte klasse is abstract.
 
 Opgave 5c
-    Nee een klasse kan niet meerdere klassen overerven.
+    Nee, een klasse kan niet meerdere klassen overerven.
 
 Opgave 5d
-    Ja een klasse kan meerdere interfaces implementeren.
+    Ja, een klasse kan meerdere interfaces implementeren.
 
 Opgave 5e
-    Ja een klasse kan een interfaces implementeren en een klasse overerven.
+    Ja, een klasse kan een (of meerdere) interface(s) implementeren en een klasse overerven.
 
 Opgave 5f
-    Ja want je implementeert niks.
+    Ja, je implementeert ze immers niet.
 
 Opgave 5g
-    Ja de klasse moet abstract zijn als minstens één methode abstract is want anders krijg je compileer
-    fouten
+    Ja, de klasse moet abstract zijn als ten minste één methode abstract is. Als de klasse niet abstract is,
+    zul je de code niet kunnen compilen; dit is een soort fail-safe zodat je niet per abuis de implementatie
+    van een methode kan vergeten, tenzij je expliciet aangeeft dat er abstracte methodes in de klasse zitten.
 
 Opgave 5h
-    Polymorfisme betekent dat het zich voor doet op het moment dat je logisch
-    gezien dezelfde handeling uitvoort maar deze technisch gezien
-    van elkaar verschillen
+    Wanneer je logisch gezien één en dezelfde handeling meerdere keren uitvoert, maar deze technisch gezien
+    toch van elkaar verschillen spreken we van polymorfisme.
 
 Opgave 6a
-    Ja dat kan. Want een abstracte klasse is voor de rest
-    bijna hetzelfde als een normale klasse
+    Ja, dat kan. Het abstract maken van een klasse geeft de compiler de instructie om abstracte methodes in de
+    klasse te honereren. Het zegt echter niet dat het verplicht is dat er vanaf dat moment abstracte methodes
+    in de klasse komen te zitten. Om het simpel te zeggen, het geeft je 'toestemming' om abstracte methodes toe
+    te voegen aan de klasse - het verplicht je er niet toe.
 
 Opgave 6b
-    Ja dat moet want in de abstracte klasse is de body van de abstracte methode niet
-    gedefineerd dus als je dat niet hoefde te doen heb je een zinloze methode.
+    Ja dat moet want in de abstracte klasse is de body van de abstracte methode niet gedefineerd dus als je dat
+    niet hoefde te doen heb je een zinloze methode, wat potentieel bugs zou kunnen veroorzaken als iemand
+    'per ongeluk' vergeet een bepaalde methode alsnog te implementeren.
 
 Opgave 6c
-    Een throw new NotImplementedException() toevoegen, deze oplossing is logisch omdat je dan gewoon een
-    exception krijgt en geen compiler fout
+    Een logische oplossing zou zijn om een `NotImplementedException` te raisen. Dit zorgt ervoor dat de compiler
+    alsnog een implementatie voor de methode ziet, terwijl de methode per definitie eigenlijk niets doet. Mocht
+    iemand de methode alsnog aanroepen, dan is het voor de caller ook nog eens duidelijk dat deze niet geimplementeerd
+    is door de Exception die er ontstaat.
 
 Opgave 6d
     Het is geinitialiseerd dus kan niet abstract zijn
 
 Opgave 6e
-    Het is abstract dus is niet geinitaliseerd en omdat het dan ook
-    final is kan het niet eens geinitaliseerd worden.
+    Een final method is een method dat niet meer extended of overriden kan worden om de implementatie te veranderen.
+    Het is niet mogelijk om een methode abstract en final tegelijk te maken; in dat geval zou er geen implementatie
+    zijn en zal die er ook nooit kunnen komen.
