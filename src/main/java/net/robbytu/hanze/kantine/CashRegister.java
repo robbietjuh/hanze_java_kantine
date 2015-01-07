@@ -58,13 +58,22 @@ public class CashRegister {
          *
          *   +   If the payment succeeds, calculate our new gross and sales
          */
-        if(person.getPaymentMethod() != null && person.getPaymentMethod().pay(amountOfMoneyDue)) {
-            this.amountOfMoney += amountOfMoneyDue;
-            this.amountOfArticles += amountOfArticlesDue;
-        }
-        else {
+        try
+        {
+            if(person.getPaymentMethod() != null) {
+                person.getPaymentMethod().pay(amountOfMoneyDue);
+                this.amountOfMoney += amountOfMoneyDue;
+                this.amountOfArticles += amountOfArticlesDue;
+            }
+            else {
+                System.out.println("Unsuccesful checkout: " + person.getFirstname() + " " + person.getLastname() +
+                                   " did not have an payment method.");
+            }
+        } catch (TooLittleMoneyException e)
+        {
+            e.printStackTrace();
             System.out.println("Unsuccesful checkout: " + person.getFirstname() + " " + person.getLastname() +
-                               " did not have enough money.");
+                    " did not have enough money.");
         }
     }
 
