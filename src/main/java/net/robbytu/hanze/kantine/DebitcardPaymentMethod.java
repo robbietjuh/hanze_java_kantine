@@ -27,15 +27,15 @@ public class DebitcardPaymentMethod extends PaymentMethod {
      * @return Wether or not the payment succeeded
      */
     @Override
-    public boolean pay(double due) {
+    public void pay(double due) throws TooLittleMoneyException
+    {
         // Check wether we can afford this...
         if(due <= (this.balance + this.creditLimit)) {
             this.balance -= due;
-            return true;
         }
 
         // Seems like we can't
-        return false;
+        throw new TooLittleMoneyException();
     }
 
 }
