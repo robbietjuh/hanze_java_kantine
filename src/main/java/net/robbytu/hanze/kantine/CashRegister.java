@@ -53,27 +53,19 @@ public class CashRegister {
 
         /* Ask for a payment provider and try to withdraw the amount due:
          *
-         *   -   If no payment provider is present, cancel the checkout
          *   -   If the payment fails, cancel the checkout
          *
          *   +   If the payment succeeds, calculate our new gross and sales
          */
-        try
-        {
-            if(person.getPaymentMethod() != null) {
-                person.getPaymentMethod().pay(amountOfMoneyDue);
-                this.amountOfMoney += amountOfMoneyDue;
-                this.amountOfArticles += amountOfArticlesDue;
-            }
-            else {
-                System.out.println("Unsuccesful checkout: " + person.getFirstname() + " " + person.getLastname() +
-                                   " did not have an payment method.");
-            }
-        } catch (TooLittleMoneyException e)
-        {
+        try {
+            person.getPaymentMethod().pay(amountOfMoneyDue);
+            this.amountOfMoney += amountOfMoneyDue;
+            this.amountOfArticles += amountOfArticlesDue;
+        }
+        catch (TooLittleMoneyException e) {
             e.printStackTrace();
             System.out.println("Unsuccesful checkout: " + person.getFirstname() + " " + person.getLastname() +
-                    " did not have enough money.");
+                               " did not have enough money.");
         }
     }
 
