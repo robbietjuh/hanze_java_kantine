@@ -16,38 +16,57 @@ import static org.hamcrest.CoreMatchers.*;
  */
 public class PaymentTests {
 
-    @Test
-    public void testCashPayments() {
+    @Test(expected = TooLittleMoneyException.class)
+    public void testCashPaymentsWithLowBalance() throws TooLittleMoneyException {
         // Initialize a new cash payment provider
         CashPaymentMethod cashPayment = new CashPaymentMethod();
-        cashPayment.setBalance(20.0);
+        cashPayment.setBalance(10.0);
 
         // Check some payments
-        assertThat("Because our balance should be 20 euros, we can buy something that costs 5 euros",
-                   cashPayment.pay(5.00), equalTo(true));
-
-        assertThat("Because our balance should be 15 euros, we cannot buy something that costs 19 euros",
-                cashPayment.pay(19.00), equalTo(false));
-
-        assertThat("Because our balance should be 15 euros, we can buy something that costs 15 euros",
-                cashPayment.pay(15.00), equalTo(true));
+        cashPayment.pay(15.00);
     }
 
     @Test
-    public void testDebitPayments() {
+    public void testCashPayments()  {
         // Initialize a new cash payment provider
-        DebitcardPaymentMethod debitPayment = new DebitcardPaymentMethod();
-        debitPayment.setBalance(20.0);
-        debitPayment.setCreditLimit(10.0);
+        CashPaymentMethod cashPayment = new CashPaymentMethod();
+        cashPayment.setBalance(10.0);
 
         // Check some payments
-        assertThat("Because our balance should be 30 euros, we can buy something that costs 5 euros",
-                debitPayment.pay(5.00), equalTo(true));
+        try {
+            cashPayment.pay(5.00);
+            assert true;
+        }
+        catch(Exception ignored) {
+            assert false;
+        }
+    }
 
-        assertThat("Because our balance should be 25 euros, we cannot buy something that costs 29 euros",
-                debitPayment.pay(29.00), equalTo(false));
+    @Test(expected = TooLittleMoneyException.class)
+    public void testDebitcardPaymentsWithLowBalance() throws TooLittleMoneyException {
+        // Initialize a new debitcard payment provider
+        DebitcardPaymentMethod debitcard = new DebitcardPaymentMethod();
+        debitcard.setBalance(10.0);
+        debitcard.setCreditLimit(10.0);
 
-        assertThat("Because our balance should be 25 euros, we can buy something that costs 25 euros",
-                debitPayment.pay(25.00), equalTo(true));
+        // Check some payments
+        debitcard.pay(25.00);
+    }
+
+    @Test
+    public void testDebitcardPayments()  {
+        // Initialize a new debitcard payment provider
+        DebitcardPaymentMethod debitcard = new DebitcardPaymentMethod();
+        debitcard.setBalance(10.0);
+        debitcard.setCreditLimit(10.0);
+
+        // Check some payments
+        try {
+            debitcard.pay(5.00);
+            assert true;
+        }
+        catch(Exception ignored) {
+            assert false;
+        }
     }
 }
