@@ -67,8 +67,8 @@ public class CashRegister {
         }
         catch (TooLittleMoneyException e) {
             if(DEBUG)
-                System.out.println("Unsuccesful checkout: " + person.getFirstname() + " " + person.getLastname() +
-                                   " did not have enough money.");
+                System.out.printf("Unsuccesful checkout: %s %s did not have enough money.\n",
+                                  person.getFirstname(), person.getLastname());
         }
     }
 
