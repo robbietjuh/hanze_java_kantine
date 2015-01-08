@@ -17,32 +17,30 @@ public class CanteenSimulation {
     private CanteenSupply supply;
     private Random random;
 
-    private static final int AMOUNT_OF_ARTICLES = 4;
-    private static final String[] ARTICLE_NAMES = new String[] {  "Coffee", "Peanut butter sandwich", "Cheese sandwich", "Apple juice"};
-    private static final double[] ARTICLE_PRICES = new double[] { 1.50,     2.10,                     1.65,              1.65 };
-
-    private static final int MIN_ARTICLES_PER_TYPE = 10000;
-    private static final int MAX_ARTICLES_PER_TYPE = 20000;
-
     private static final int MIN_PERSONS_PER_DAY = 50;
     private static final int MAX_PERSONS_PER_DAY = 100;
 
     private static final int MIN_ARTICLES_PER_PERSON = 1;
     private static final int MAX_ARTICLES_PER_PERSON = 4;
 
-    private static final String[] DAYS_PER_WEEK = new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday "};
+    private static final String[] DAYS_PER_WEEK = new String[] { "Monday", "Tuesday", "Wednesday", "Thursday",
+                                                                 "Friday", "Saturday", "Sunday "};
+
+    private static final boolean DEBUG = Main.DEBUG;
+
+    private static String[] initialArticleNames;
 
     /**
      * Initializes a new instance of the CanteenSimulation class
      */
-    public CanteenSimulation() {
+    public CanteenSimulation(String[] articleNames, double[] articlePrices, int[] articleQtys) {
         this.canteen = new Canteen();
         this.random = new Random();
 
-        int[] quantities = this.getRandomArray(AMOUNT_OF_ARTICLES, MIN_ARTICLES_PER_TYPE, MAX_ARTICLES_PER_TYPE);
-        this.supply = new CanteenSupply(ARTICLE_NAMES, ARTICLE_PRICES, quantities);
-
+        this.supply = new CanteenSupply(articleNames, articlePrices, articleQtys);
         this.canteen.setCanteenSupply(this.supply);
+
+        initialArticleNames = articleNames;
     }
 
     /**
@@ -80,7 +78,7 @@ public class CanteenSimulation {
         String[] articles = new String[indexes.length];
 
         for(int index = 0; index < indexes.length; index++)
-            articles[index] = ARTICLE_NAMES[indexes[index]];
+            articles[index] = initialArticleNames[indexes[index]];
 
         return articles;
     }
@@ -97,12 +95,7 @@ public class CanteenSimulation {
             // Let a random amount of people in
             int peopleToLetIn = this.getRandomValue(MIN_PERSONS_PER_DAY, MAX_PERSONS_PER_DAY);
             for(int amountOfPeopleLetIn = 0; amountOfPeopleLetIn < peopleToLetIn; amountOfPeopleLetIn++) {
-                // Let a random type of person in
-                int typeOfPerson = this.getRandomValue(1, 100);
-
-                if(typeOfPerson == 1) this.simulatePersonEntry("canteenEmployee");
-                if(typeOfPerson > 1 && typeOfPerson <= 89) this.simulatePersonEntry("student");
-                if(typeOfPerson > 89) this.simulatePersonEntry("teacher");
+                this.simulatePersonEntry(this.generateRandomPerson());
             }
 
             // Process people in line
@@ -111,9 +104,15 @@ public class CanteenSimulation {
             // Print today's profits
             int amountOfArticles = this.canteen.getCashRegister().getAmountOfArticles();
             double amountOfMoney = this.canteen.getCashRegister().getAmountOfMoney();
+            int succesfulTransactions = this.canteen.getCashRegister().getAmountOfSuccesfulCheckouts();
 
-            System.out.println(String.format("On day %d, %d articles were sold, resulting in a sales volume of %.2f euros",
-                                             currentDay + 1, amountOfArticles, amountOfMoney));
+            System.out.printf("On day %d we had %d customers, of which %d (~%.0f%%) succesfully bought " +
+                              "something, resulting in %d articles being sold with a total sales " +
+                              "volume of %.2f euros\n",
+
+                              currentDay + 1, peopleToLetIn, succesfulTransactions,
+                              ((float)succesfulTransactions / (float)peopleToLetIn) * 100.0,
+                              amountOfArticles, amountOfMoney);
 
             // Save information
             salesQuantities[currentDay] = amountOfArticles;
@@ -127,37 +126,44 @@ public class CanteenSimulation {
         System.out.println();
         System.out.println(" ---- ");
         System.out.println();
-        System.out.println("  * Average quantity:   " + Math.round(Administration.calculateAverageQuantity(salesQuantities)));
-        System.out.println("  * Average sales:      " + String.format("%.2f euros", Administration.calculateAverageSales(salesVolumes)));
+        System.out.printf("  * Average quantity:   %d\n", Math.round(Administration.calculateAverageQuantity(salesQuantities)));
+        System.out.printf("  * Average sales:      %.2f euros\n", Administration.calculateAverageSales(salesVolumes));
         System.out.println("  * Average sales per day of the week: ");
 
         double[] salesPerDay = Administration.calculateDaySale(salesVolumes);
         for(int day = 0; day < salesPerDay.length; day++)
-            System.out.println(String.format("      %s: %.2f euros", DAYS_PER_WEEK[day], salesPerDay[day]));
+            System.out.printf("      %s: %.2f euros\n", DAYS_PER_WEEK[day], salesPerDay[day]);
     }
 
     /**
-     * Creates a person complying with the specified type, puts some items onto their
-     * tray and adds it in line.
-     * @param typeOfPerson The type of person. Should be one of "student", "teacher" or "canteenEmployee".
+     * Generates a random type of person
+     * @return A random type of person
      */
-    private void simulatePersonEntry(String typeOfPerson) {
+    private Person generateRandomPerson() {
         Person person = null;
+        int typeOfPerson = this.getRandomValue(1, 100);
 
-        if(typeOfPerson.equalsIgnoreCase("student")) person = new Student();
-        else if(typeOfPerson.equalsIgnoreCase("teacher")) person = new Teacher();
-        else if(typeOfPerson.equalsIgnoreCase("canteenEmployee")) person = new CanteenEmployee();
+        if(typeOfPerson == 1) person = new CanteenEmployee();
+        if(typeOfPerson > 1 && typeOfPerson <= 89) person = new Student();
+        if(typeOfPerson > 89) person = new Teacher();
 
-        if(person != null) {
-            person.setTray(new Tray());
+        return person;
+    }
 
-            int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
-            int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, AMOUNT_OF_ARTICLES-1);
-            String[] articles = this.getArticleNames(articlesToPutOnTray);
+    /**
+     * Puts some items onto the person's tray and adds it in line.
+     * @param person The person to use
+     */
+    private void simulatePersonEntry(Person person) {
+        person.setTray(new Tray());
 
-            this.canteen.addInLine(person, articles);
-            System.out.println(person.toString());
-        }
+        int amountOfArticlesToPutOnTray = this.getRandomValue(MIN_ARTICLES_PER_PERSON, MAX_ARTICLES_PER_PERSON);
+        int[] articlesToPutOnTray = getRandomArray(amountOfArticlesToPutOnTray, 0, initialArticleNames.length-1);
+        String[] articles = this.getArticleNames(articlesToPutOnTray);
+
+        this.canteen.addInLine(person, articles);
+
+        if(DEBUG) System.out.println(person.toString());
     }
 
 }
