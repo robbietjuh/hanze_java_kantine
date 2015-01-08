@@ -12,8 +12,11 @@ import java.util.Iterator;
  * @license MIT License
  */
 public class CashRegister {
+    private static final boolean DEBUG = Main.DEBUG;
+
     private int amountOfArticles;
     private double amountOfMoney;
+    private int amountOfSuccesfulCheckouts;
 
     /**
      * Initializes a new instance of the CashRegister class
@@ -54,18 +57,18 @@ public class CashRegister {
         /* Ask for a payment provider and try to withdraw the amount due:
          *
          *   -   If the payment fails, cancel the checkout
-         *
          *   +   If the payment succeeds, calculate our new gross and sales
          */
         try {
             person.getPaymentMethod().pay(amountOfMoneyDue);
             this.amountOfMoney += amountOfMoneyDue;
             this.amountOfArticles += amountOfArticlesDue;
+            this.amountOfSuccesfulCheckouts++;
         }
         catch (TooLittleMoneyException e) {
-            e.printStackTrace();
-            System.out.println("Unsuccesful checkout: " + person.getFirstname() + " " + person.getLastname() +
-                               " did not have enough money.");
+            if(DEBUG)
+                System.out.println("Unsuccesful checkout: " + person.getFirstname() + " " + person.getLastname() +
+                                   " did not have enough money.");
         }
     }
 
@@ -86,10 +89,19 @@ public class CashRegister {
     }
 
     /**
+     * Returns the amount of succesful checkouts since the last reset
+     * @return Amount of succesful checkouts
+     */
+    public int getAmountOfSuccesfulCheckouts() {
+        return this.amountOfSuccesfulCheckouts;
+    }
+
+    /**
      * Resets all counters
      */
     public void resetRegister() {
         this.amountOfArticles = 0;
         this.amountOfMoney = 0;
+        this.amountOfSuccesfulCheckouts = 0;
     }
 }
