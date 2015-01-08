@@ -13,8 +13,6 @@ public class Main
     private static final String APP_VERSION = "1.0 stable";
     private static final String APP_VCS = "git";
 
-    private static CanteenSimulation canteenSimulation;
-
     /**
      * Main entry point for the application
      * @param args Command-line arguments
@@ -56,8 +54,8 @@ public class Main
             articleQtys[i] = initialArticleQtys.get(i);
         }
 
-        System.out.println("\n---\n\nStarting the simulation!\n");
-        canteenSimulation = new CanteenSimulation(articleNames, articlePrices, articleQtys);
+        System.out.println("\n ---- \n");
+        CanteenSimulation canteenSimulation = new CanteenSimulation(articleNames, articlePrices, articleQtys);
         canteenSimulation.simulate(amountOfDaysToSimulate);
     }
 
@@ -71,7 +69,6 @@ public class Main
         // Print the question to the screen
         System.out.printf("%s [%s]: ", question, inputType);
         Scanner scanner = new Scanner(System.in);
-        System.out.println();
 
         // Try to get validated input from the user
         try {
