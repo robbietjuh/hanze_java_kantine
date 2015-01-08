@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Main
 {
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
 
     private static final String APP_VERSION = "1.0 stable";
     private static final String APP_VCS = "git";
@@ -21,28 +21,29 @@ public class Main
      */
     public static void main(String[] args)
     {
-        // Print a welcome header
-        printWelcome();
-
         // Initialize placeholder variables
         boolean addProduct = true;
         ArrayList<String> initialArticleNames = new ArrayList<String>();
         ArrayList<Double> initialArticlePrices = new ArrayList<Double>();
         ArrayList<Integer> initialArticleQtys = new ArrayList<Integer>();
 
+        // Print app header
+        System.out.println("Hanze Kantine Simulator");
+        System.out.printf("Version %s [%s]\n\n", APP_VERSION, APP_VCS);
+
         // Loop for as long as the user wants to add new products
         while(addProduct) {
-            System.out.println();
-            System.out.println("Please input details for the article to add:");
+            System.out.println("Please enter details for the article to add:");
 
             initialArticleNames.add((String) getUserInput("Article name", "string"));
             initialArticlePrices.add((Double) getUserInput("Article price", "double"));
             initialArticleQtys.add((Integer) getUserInput("Article quantity", "int"));
 
             addProduct = (Boolean) getUserInput("Add another article", "Y/N");
+            System.out.println();
         }
 
-        int amountOfDaysToSimulate = ((Integer)getUserInput("Amount of days to simulate", "int")).intValue();
+        int amountOfDaysToSimulate = (Integer) getUserInput("Amount of days to simulate", "int");
 
         // Now pass everything on to the canteen simulator
         String[] articleNames = new String[initialArticleNames.size()];
@@ -50,11 +51,12 @@ public class Main
         int[] articleQtys = new int[initialArticleQtys.size()];
 
         for(int i = 0; i < initialArticleNames.size(); i++) {
-            articleNames[i] = initialArticleNames.get(i).toString();
-            articlePrices[i] = initialArticlePrices.get(i).doubleValue();
-            articleQtys[i] = initialArticleQtys.get(i).intValue();
+            articleNames[i] = initialArticleNames.get(i);
+            articlePrices[i] = initialArticlePrices.get(i);
+            articleQtys[i] = initialArticleQtys.get(i);
         }
 
+        System.out.println("\n---\n\nStarting the simulation!\n");
         canteenSimulation = new CanteenSimulation(articleNames, articlePrices, articleQtys);
         canteenSimulation.simulate(amountOfDaysToSimulate);
     }
@@ -67,7 +69,7 @@ public class Main
      */
     private static Object getUserInput(String question, String inputType) {
         // Print the question to the screen
-        System.out.print(question + " [" + inputType + "]: ");
+        System.out.printf("%s [%s]: ", question, inputType);
         Scanner scanner = new Scanner(System.in);
         System.out.println();
 
@@ -78,19 +80,14 @@ public class Main
             else if(inputType.equals("string")) return scanner.next();
             else if(inputType.equals("Y/N")) {
                 String input = scanner.next();
-                if(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("n")) return (input.equalsIgnoreCase("y"));
-                else throw new Exception("Wrong input!");
+                if(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("n")) return input.equalsIgnoreCase("y");
+                else throw new Exception("Invalid input!");
             }
             else return null;
         }
         catch(Exception ignored) {
             return getUserInput(question, inputType);
         }
-    }
-
-    private static void printWelcome() {
-        System.out.println("Hanze Kantine Simulator");
-        System.out.println("Version " + APP_VERSION + " [" + APP_VCS + "]");
     }
 
 }
