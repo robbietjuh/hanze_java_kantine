@@ -1,6 +1,5 @@
 package net.robbytu.hanze.kantine;
 
-import java.io.DataInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,11 +8,12 @@ import java.util.Scanner;
  */
 public class Main
 {
+    public static final boolean DEBUG = false;
+
     private static final String APP_VERSION = "1.0 stable";
     private static final String APP_VCS = "git";
 
     private static CanteenSimulation canteenSimulation;
-    private static ArrayList<Article> articles;
 
     /**
      * Main entry point for the application
